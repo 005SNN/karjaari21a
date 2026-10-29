@@ -1,0 +1,397 @@
+<!doctype html><html lang="et"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>BIM-mudel | Karjääri tn 21a</title>
+<meta name="theme-color" content="#fafbfb"><link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Cpath%20fill%3D%22%23343c3f%22%20d%3D%22M2%209h28v21H2z%22/%3E%3Cpath%20fill%3D%22%23fafbfb%22%20d%3D%22M6%2013h8v13H6zm12%200h8v13h-8z%22/%3E%3C/svg%3E"><link rel="preload" href="../fonts/barlow-regular.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/barlow-semibold.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/barlow-semicondensed-semibold.woff2" as="font" type="font/woff2" crossorigin><style>@font-face{font-family:'Barlow';font-style:normal;font-weight:400;font-display:swap;src:url('../fonts/barlow-regular.woff2') format('woff2')}@font-face{font-family:'Barlow';font-style:normal;font-weight:600;font-display:swap;src:url('../fonts/barlow-semibold.woff2') format('woff2')}@font-face{font-family:'Barlow Semi Condensed';font-style:normal;font-weight:600;font-display:swap;src:url('../fonts/barlow-semicondensed-semibold.woff2') format('woff2')}
+:root{--paper:#fafbfb;--wash:#e7ebea;--ink:#343c3f;--deep:#263137;--timber:#806a4b;
+--muted:#566164;--line:#cbd1d0;--white:#fff;--font:'Barlow',Arial,sans-serif;
+--display:'Barlow Semi Condensed','Arial Narrow',Arial,sans-serif;color-scheme:light}
+
+*{box-sizing:border-box}html{background:var(--paper);color:var(--ink);-webkit-tap-highlight-color:#806a4b24}
+body{margin:0;font:17px/1.55 var(--font);font-weight:400;overflow-wrap:anywhere}button,input,select{font:inherit}
+a{color:inherit;text-underline-offset:4px;text-decoration-thickness:1px}a:hover{color:var(--deep);text-decoration-thickness:2px}
+/* Buttons and keyboard focus: shared by documents and future viewers. */
+button,a,summary{touch-action:manipulation}button{cursor:pointer}button:disabled{cursor:wait;opacity:.6}
+:focus-visible{outline:3px solid var(--timber);outline-offset:4px}
+.measure{white-space:nowrap}.table-hint{display:none}
+h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.1;text-wrap:balance;overflow-wrap:anywhere}
+h1{font-size:clamp(42px,5vw,72px);letter-spacing:-.025em;margin:0 0 22px}
+h2{font-size:clamp(30px,3vw,42px);letter-spacing:-.015em;margin:0 0 24px}
+h3{font-size:25px;margin:28px 0 16px}p{margin:0 0 16px;max-width:72ch}img{display:block;max-width:100%;height:auto}
+figure{margin:0;min-width:0}figcaption,.note{color:var(--muted);font-size:14px;line-height:1.5}figcaption{margin-top:10px}
+section,[id],h2,h3{scroll-margin-top:24px}main,section,article,nav,header,footer,div{min-width:0}
+.wrap{width:min(1320px,100%);margin:0 auto;padding:0 max(48px,env(safe-area-inset-right)) 0 max(48px,env(safe-area-inset-left))}
+.skip-link{position:fixed;left:16px;top:12px;padding:12px 18px;z-index:1000;background:var(--deep);color:white;transform:translateY(-200%)}
+.skip-link:focus{transform:translateY(0)}.skip-link:hover{color:white}
+/* Document header and navigation. */
+.site-head{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:100px;padding-top:max(18px,env(safe-area-inset-top));padding-bottom:18px}
+.site-id{overflow-wrap:anywhere;font-size:20px;font-weight:600;text-decoration:none;line-height:1.25}.site-id small{display:block;font-size:14px;font-weight:400;color:var(--muted);margin-top:4px}
+.site-nav{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.site-nav a{font-size:15px;padding:10px 12px;text-decoration:none}
+.site-nav a:hover{background:var(--wash)}.site-nav a[aria-current=page]{box-shadow:inset 0 -3px var(--timber)}
+.button,button.control{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:10px 18px;border:1px solid var(--ink);border-radius:2px;background:transparent;color:var(--ink);font:600 15px/1.4 var(--font);text-decoration:none;text-align:center}
+.button:hover,button.control:hover{background:var(--deep);color:var(--white);border-color:var(--deep)}
+.button.solid{background:var(--ink);color:white}.button.solid:hover{background:var(--deep)}
+.actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.lede{font-size:20px;line-height:1.5;color:var(--muted);max-width:48ch}
+.project-state{display:flex;gap:12px;align-items:center;font-size:15px;color:var(--muted);margin:0 0 22px}
+
+.section-layout{display:grid;grid-template-columns:220px minmax(0,1fr);gap:48px;padding-top:72px;padding-bottom:72px}
+.section-intro h2{font-size:32px}.section-intro p{font-size:15px;color:var(--muted)}
+.site-foot{margin-top:40px;padding-top:28px;padding-bottom:36px;background:var(--wash)}
+.site-foot .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}.site-foot p{margin:0;font-size:14px;max-width:65ch}
+.table-wrap{max-width:100%;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-color:var(--muted) var(--wash)}
+table{width:100%;border-collapse:collapse;font-size:15px;line-height:1.45;font-variant-numeric:tabular-nums}
+th,td{padding:13px 14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line);overflow-wrap:anywhere}
+th{font-weight:600;background:var(--wash);color:var(--deep)}tbody th[scope=row]{background:transparent;color:inherit;font-weight:400}tfoot td{font-weight:600;background:var(--wash)}
+@media(pointer:fine){html{overscroll-behavior:none}}
+@media(max-width:760px){body{font-size:16px}.wrap{padding-left:max(20px,env(safe-area-inset-left));padding-right:max(20px,env(safe-area-inset-right))}.site-head{align-items:flex-start;gap:14px;min-height:0;flex-direction:column;padding-top:max(22px,env(safe-area-inset-top));padding-bottom:18px}.site-nav{gap:2px;margin-left:-10px}.site-nav a{padding:10px 8px;font-size:14px}.section-layout{grid-template-columns:1fr;gap:24px;padding-top:44px;padding-bottom:44px}.section-intro h2{margin-bottom:12px}.section-intro p{margin-bottom:0}.lede{font-size:18px}h1{font-size:46px}.site-foot .wrap{gap:16px}th,td{padding:11px 10px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* Prepared viewer chrome. Apply body.tour-page or body.model-page; not wired yet. */
+html,body{height:100%;background:var(--wash);color-scheme:light}[hidden]{display:none!important}
+.stage{position:relative;width:100%;overflow:hidden;background:var(--wash);isolation:isolate;user-select:none}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+/* Header components: .viewer-title, .viewer-subtitle, .viewer-home. */
+.viewer-home{font-size:14px;text-decoration:none;min-height:44px;display:inline-flex;align-items:center;padding:8px 12px;border:1px solid var(--line);border-radius:2px}
+.viewer-home:hover{background:var(--wash)}
+.viewer-title{margin:0;font:600 29px/1.1 var(--display);letter-spacing:-.01em}.viewer-subtitle{margin:5px 0 0;font-size:14px;color:var(--muted)}
+/* Room buttons: aria-pressed=true (tour), .on (3D). */
+#rooms{display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;scrollbar-color:var(--muted) var(--wash);padding:7px 5px 9px;scroll-padding-inline:5px;touch-action:pan-x;overscroll-behavior-x:contain}
+#rooms button{scroll-margin-inline:5px;flex:0 0 auto;min-height:44px;padding:10px 16px;border:1px solid var(--line);border-radius:2px;background:var(--paper);color:var(--ink);font:400 15px/1.3 var(--font);cursor:pointer}
+#rooms button:hover{border-color:var(--ink);background:var(--wash)}#rooms button[aria-pressed=true],#rooms button.on{background:var(--deep);color:var(--paper);border-color:var(--deep)}
+#hint{font-size:14px;color:var(--muted);line-height:1.5;margin-top:8px;max-width:none}
+.tour-page #photo,.tour-page #pano{touch-action:none}.tour-page #backdrop{display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.tour-page #photo{position:absolute;object-fit:fill;transform-origin:center;cursor:grab;transition:opacity .2s;z-index:1;max-width:none}
+.tour-page #pano,.tour-page #fallback,.tour-page #fader{position:absolute;inset:0;width:100%;height:100%;opacity:0;pointer-events:none;transition:opacity .2s;z-index:2}
+.tour-page #pano{cursor:grab}.tour-page #fader{object-fit:cover;z-index:4}.tour-page #fallback{overflow:auto;overscroll-behavior:contain;touch-action:pan-x pan-y;background:var(--wash)}.tour-page #fallback img{height:100%;width:auto;max-width:none}
+.tour-page #fallback[inert],.tour-page #pano[inert]{visibility:hidden}.tour-page #pano:focus-visible,.tour-page #fallback:focus-visible{outline:3px solid var(--timber);outline-offset:-7px}
+.tour-page .stage[data-mode=in] #photo{opacity:0}.tour-page .stage[data-mode=in] #pano{opacity:1;pointer-events:auto}.tour-page .stage[data-fallback=true][data-mode=in] #pano{opacity:0;pointer-events:none}.tour-page .stage[data-fallback=true][data-mode=in] #fallback{opacity:1;pointer-events:auto}
+.tour-page .shade{display:none}.tour-page header{position:absolute;z-index:7;inset:0 0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:20px max(24px,env(safe-area-inset-right)) 20px max(24px,env(safe-area-inset-left));padding-top:max(20px,env(safe-area-inset-top));background:var(--paper);color:var(--ink);pointer-events:auto}
+.tour-page .brand{display:flex;align-items:center;gap:24px}.tour-page .brand h1{font:600 30px/1.1 var(--display);margin:0;letter-spacing:-.01em}.tour-page .brand p{font-size:14px;color:var(--muted);margin:5px 0 0}
+.tour-page header nav{display:flex;gap:2px;padding:3px;background:var(--wash);border-radius:2px}.tour-page header nav button{min-height:44px;border:0;border-radius:1px;background:transparent;color:var(--ink);padding:10px 20px;font-size:15px}.tour-page header nav button:hover{background:#d3d9d7}.tour-page header nav button[aria-pressed=true]{background:var(--deep);color:var(--paper)}
+.tour-page #viewname{position:static;pointer-events:none;font-size:14px;max-width:none;color:var(--muted);padding:0;background:none;border:0}.tour-page .view-row{display:flex;align-items:center;gap:16px}.tour-page header{flex-wrap:wrap}
+/* Tour loader/status: #load and #notice retain their live-region semantics. */
+.tour-page #load{position:absolute;z-index:8;right:24px;top:112px;padding:7px 12px;background:var(--paper);font-size:14px;color:var(--ink);pointer-events:none}.tour-page #load:empty{display:none}
+.tour-page #markers{position:absolute;inset:0;z-index:6;overflow:hidden;pointer-events:none}.tour-page .hotspot{position:absolute;left:0;top:0;display:flex;align-items:center;gap:8px;transform:translate(-50%,-50%);padding:6px 12px 6px 6px;border:1px solid var(--ink);border-radius:2px;background:var(--paper);color:var(--ink);font-size:14px;line-height:1.3;white-space:nowrap;pointer-events:auto;min-height:44px}
+.tour-page .hotspot:hover{background:var(--wash);border-color:var(--deep)}.tour-page .hotspot .dot{display:grid;place-items:center;background:transparent;color:var(--ink);width:28px;height:28px;font-size:17px;flex:none;border-radius:1px}
+.tour-page .hotspot.door{flex-direction:column;gap:5px;padding:0;background:none;border:0}.tour-page .hotspot.door .dot{width:44px;height:44px;background:var(--paper);color:var(--deep);border:1px solid var(--ink);font-size:24px}.tour-page .hotspot.door .label{background:var(--paper);color:var(--ink);border:1px solid var(--line);border-radius:2px;padding:6px 10px;font-size:14px}.tour-page .hotspot.door:hover .dot{background:var(--wash)}
+.tour-page .controls{position:absolute;z-index:8;right:24px;bottom:186px;display:flex;flex-direction:column;gap:6px}.tour-page .controls button{display:grid;place-items:center;width:44px;height:44px;background:var(--paper);border:1px solid var(--ink);border-radius:2px;color:var(--ink);font-size:23px}.tour-page .controls button:hover{background:var(--deep);color:var(--paper)}
+.tour-page #leaders{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}.tour-page #leaders line{stroke:var(--ink);stroke-width:1.2}
+.tour-page footer{position:absolute;z-index:8;inset:auto 0 0;padding:14px max(24px,env(safe-area-inset-right)) max(16px,env(safe-area-inset-bottom)) max(24px,env(safe-area-inset-left));background:var(--paper);color:var(--ink);pointer-events:none}
+.tour-page .footerline{display:flex;align-items:center;gap:12px;margin-bottom:2px;font-size:14px}.tour-page .badge{font-weight:600}.tour-page #rooms{pointer-events:auto}.tour-page #back{pointer-events:auto;min-height:44px;padding:8px 14px;border:1px solid var(--ink);border-radius:2px;background:var(--paper);color:var(--ink);font-size:14px}.tour-page #back:hover{background:var(--deep);color:var(--paper)}
+.tour-page #notice{position:absolute;z-index:9;top:166px;left:24px;max-width:calc(100% - 48px);padding:12px 16px;background:var(--paper);border-left:4px solid var(--timber);font-size:15px}.tour-page #notice:empty{display:none}
+.model-page canvas{display:block;width:100%;height:100%;max-width:none;touch-action:none;visibility:hidden}.model-page canvas:focus-visible{outline:3px solid var(--timber);outline-offset:-7px}
+.model-page #poster{position:absolute;inset:0;background:var(--wash)}.model-page #poster img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.model-page .top{z-index:3;position:absolute;left:0;top:0;right:0;padding:20px max(24px,env(safe-area-inset-right)) 20px max(24px,env(safe-area-inset-left));padding-top:max(20px,env(safe-area-inset-top));display:flex;align-items:center;justify-content:space-between;gap:24px;background:var(--paper);color:var(--ink)}
+.model-page .top nav{display:flex;gap:12px;flex-wrap:wrap}.model-page .ui{z-index:3;position:absolute;inset:auto 0 0;padding:16px max(24px,env(safe-area-inset-right)) max(16px,env(safe-area-inset-bottom)) max(24px,env(safe-area-inset-left));background:var(--paper);visibility:hidden}
+/* 3D loader: #load > #msg, .track[role=progressbar] > #bar. */
+.model-page #load{position:absolute;left:20px;right:20px;bottom:max(24px,env(safe-area-inset-bottom));margin:auto;max-width:480px;padding:24px;display:flex;flex-direction:column;gap:16px;border-radius:2px;background:var(--paper);color:var(--ink);font-size:16px;line-height:1.5;border:1px solid var(--line)}
+.model-page #load .track{width:100%;height:4px;background:var(--line);overflow:hidden}.model-page #bar{height:100%;width:100%;transform:scaleX(0);transform-origin:left;background:var(--timber)}.model-page #load nav{display:flex;flex-wrap:wrap;gap:12px 20px}.model-page #load a{font-size:15px;min-height:44px;display:flex;align-items:center;font-weight:600}
+.model-page .ready canvas,.model-page .ready .ui{visibility:visible}.model-page .ready #poster,.model-page .ready #load,.model-page .fallback .track{display:none}
+@media(max-width:760px){.viewer-home{font-size:14px;padding:8px 10px}.tour-page header{padding:14px 16px;gap:12px;align-items:flex-start}.tour-page .brand{gap:10px;display:block}.tour-page .brand .viewer-home{display:none}.tour-page .brand h1{font-size:25px}.tour-page .brand p{font-size:13px}.tour-page header nav button{font-size:14px;padding:9px 12px}.tour-page #viewname{left:16px;top:98px;font-size:14px}.tour-page #load{right:16px;top:142px;font-size:13px}.tour-page #notice{left:16px;top:186px;font-size:14px}.tour-page footer{padding:12px 16px max(14px,env(safe-area-inset-bottom))}.tour-page .footerline{font-size:13px;gap:10px}.tour-page #rooms button,.model-page #rooms button{font-size:14px;padding:10px 14px}.tour-page #hint,.model-page #hint{font-size:13px;margin-top:6px}.tour-page .controls{right:16px;bottom:182px}.tour-page .hotspot{font-size:13px}.tour-page .hotspot.door .label{font-size:13px}.model-page .top{padding:max(14px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) 14px max(16px,env(safe-area-inset-left));align-items:flex-start;gap:12px}.model-page .viewer-title{font-size:25px}.model-page .viewer-subtitle{font-size:13px}.model-page .top nav{gap:6px;justify-content:flex-end}.model-page .top .viewer-home{font-size:14px;min-height:44px;padding:8px 10px}.model-page .ui{padding:12px max(16px,env(safe-area-inset-right)) max(14px,env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left))}.model-page #load{padding:18px;left:16px;right:16px}}
+@media(max-height:600px){.tour-page header,.model-page .top{padding:10px 16px}.tour-page .brand h1,.model-page .viewer-title{font-size:23px}.tour-page .brand p,.model-page .viewer-subtitle{display:none}.tour-page #viewname{top:76px}.tour-page #load{top:76px}.tour-page .controls{right:16px;bottom:116px;flex-direction:row}.tour-page footer{padding:8px 16px}.tour-page #hint{display:none}.tour-page .footerline{display:none}.model-page .ui{padding:8px 16px}.model-page #hint{font-size:12px}.tour-page #notice{top:120px}}
+
+.model-page .model-scene{position:absolute;inset:0}.model-page .model-fullscreen{font-weight:400}
+@media(max-width:760px){
+html:has(.model-page),body.model-page{height:auto;min-height:100%;background:var(--paper)}
+.model-page .stage{height:auto;display:flex;flex-direction:column;overflow:visible;background:var(--paper)}
+.model-page .top{position:relative;order:0;flex-wrap:wrap}.model-page .top nav{justify-content:flex-start}
+.model-page .model-scene{position:relative;inset:auto;order:1;width:100%;aspect-ratio:4/3;overflow:hidden;background:var(--wash)}
+.model-page canvas{position:absolute;inset:0}.model-page .ui{position:relative;inset:auto;order:2;visibility:visible}
+.model-page #load{font-size:14px;bottom:12px;padding:14px;gap:10px}
+.model-page .stage:fullscreen{height:100dvh;overflow:hidden}.model-page .stage:fullscreen .model-scene{position:absolute;inset:0;aspect-ratio:auto;height:100%}
+.model-page .stage:fullscreen .top{position:absolute;inset:0 0 auto;z-index:2}.model-page .stage:fullscreen .ui{position:absolute;inset:auto 0 0;z-index:2}
+.tour-page .view-row{grid-column:1/-1;flex-wrap:wrap;gap:8px 16px}.tour-page .view-row nav{grid-column:auto}
+}
+
+.stage{height:100vh;height:100dvh}</style>
+<style>html:has(.bim-page),body.bim-page{height:auto;min-height:100%;background:var(--paper)}
+.bim-head{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:20px 24px;background:var(--paper)}
+.bim-head nav{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.bim-head .button{gap:14px}.download-meta{font-size:13px;font-weight:400}
+.bim-workbench{display:grid;grid-template-columns:300px minmax(0,1fr);height:calc(100dvh - 104px);min-height:580px;border-top:1px solid var(--line)}
+.bim-sidebar{grid-column:1;grid-row:1;overflow:auto;padding:24px;background:var(--paper);scrollbar-width:thin}
+.bim-sidebar h2{font-size:28px;margin:0 0 12px}.bim-sidebar .note{font-size:14px;margin-bottom:12px}
+.keyboard-help{font-size:14px;color:var(--muted);margin:8px 0 20px}.keyboard-help summary{min-height:32px;cursor:pointer}.keyboard-help p{margin:8px 0}
+.search-label{display:block;font-size:14px;font-weight:600;margin-bottom:6px}#bim-search{display:block;width:100%;min-height:46px;border:1px solid var(--muted);border-radius:2px;background:var(--paper);color:var(--ink);padding:10px;font-size:15px}
+#search-status{margin:6px 0 14px}#bim-results{list-style:none;padding:0;margin:0 0 20px;max-height:280px;overflow:auto}
+#bim-results button{width:100%;border:0;border-bottom:1px solid var(--line);background:var(--wash);color:var(--ink);padding:12px;text-align:left;min-height:46px;font-size:14px}#bim-results button:hover{background:var(--line)}#bim-results small{display:block;color:var(--muted)}
+.filter-group{margin:0 0 20px}.filter-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px}.filter-heading h3{font:600 18px var(--font);margin:0}.filter-heading button{min-height:44px;min-width:44px;border:0;background:transparent;text-decoration:underline;text-underline-offset:3px;font-size:14px;color:var(--ink);padding:8px}
+.filter-group summary{cursor:pointer;min-height:44px;padding:9px 0;font-weight:600;font-size:16px}.toggle-list{display:flex;flex-wrap:wrap;gap:6px;padding:3px 0}
+.bim-toggle{display:inline-flex;align-items:center;justify-content:space-between;gap:8px;min-height:44px;padding:9px 12px;border:1px solid var(--line);border-radius:2px;background:var(--paper);color:var(--ink);font:400 14px/1.3 var(--font);text-align:left}
+.bim-toggle[aria-pressed=true]{background:var(--deep);border-color:var(--deep);color:var(--paper)}.bim-toggle:hover{box-shadow:inset 0 0 0 1px var(--muted)}.bim-toggle small{font-size:12px}
+.bim-about{padding-top:20px;border-top:1px solid var(--line)}.bim-about h3{font-size:22px;margin:0 0 12px}.bim-about p{font-size:14px;line-height:1.5}
+.bim-scene{grid-column:2;grid-row:1;position:relative;min-height:0;background:var(--wash);overflow:hidden;isolation:isolate}
+#bim-canvas{display:block;width:100%;height:100%;touch-action:none}#bim-canvas:focus-visible{outline-offset:-6px}
+.has-properties #bim-canvas{width:calc(100% - 360px)}.has-properties .scene-tools{right:384px}
+#bim-load{position:absolute;inset:40% 24px auto;text-align:center;background:var(--paper);padding:20px;max-width:360px;margin:auto;z-index:1}
+.scene-label{position:absolute;top:20px;left:24px;font-size:13px;color:var(--muted);pointer-events:none;background:var(--wash);padding:4px 8px}
+.scene-tools{position:absolute;bottom:20px;left:24px;right:24px;display:flex;align-items:center;gap:20px;background:var(--paper);padding:14px 18px;max-width:580px;margin:auto;border-radius:2px}
+.section-control{flex:1}.section-control label{display:flex;gap:12px;justify-content:space-between;font-size:14px;line-height:1.3}.section-control output{font-variant-numeric:tabular-nums;color:var(--muted);white-space:nowrap}#bim-section{display:block;width:100%;height:34px;accent-color:var(--timber);margin:4px 0 -5px;cursor:pointer}
+#bim-fallback,.no-script{position:absolute;inset:20% 24px auto;max-width:480px;margin:auto;padding:24px;background:var(--paper);z-index:2}#bim-fallback h2{font-size:28px}
+#bim-properties{position:absolute;z-index:3;right:0;top:0;bottom:0;width:min(360px,100%);padding:22px;overflow:auto;background:var(--paper);border-left:1px solid var(--line);box-shadow:-8px 0 28px #26313712}
+.properties-head{display:flex;align-items:flex-start;gap:10px;justify-content:space-between}.properties-head .note{margin:0 0 6px}.properties-head h2{font-size:26px;margin:0 0 18px}.properties-head button{font-size:14px;min-height:44px;padding:8px 12px}
+#properties-body{font-size:14px;user-select:text}#properties-body dl{margin:0 0 18px}#properties-body dt{color:var(--muted);font-size:13px;margin-top:10px}#properties-body dd{margin:0;overflow-wrap:anywhere}#properties-body .globalid{font-size:12px;font-family:monospace}#properties-body details{border-top:1px solid var(--line);padding:6px 0}#properties-body summary{cursor:pointer;font-weight:600;min-height:44px;padding:10px 0}#properties-body h3{font-size:22px;margin:18px 0 10px}#bim-locate{margin-top:20px}
+@media(min-width:761px) and (max-width:1100px){.has-properties #bim-canvas{width:100%}.has-properties .scene-tools{right:24px}#bim-properties{position:fixed;top:auto;bottom:20px;right:20px;max-height:65dvh;width:360px;border:1px solid var(--line);border-top:3px solid var(--timber)}}
+@media(max-width:760px){
+.bim-head{padding:16px;align-items:flex-start;flex-direction:column;gap:14px}.bim-head .viewer-title{font-size:26px}.bim-head nav{width:100%;gap:8px;justify-content:space-between}.bim-head .button{padding:10px 12px;gap:10px;font-size:14px}.download-meta{font-size:12px}.bim-head .viewer-home{padding:8px;font-size:14px}
+.bim-workbench{display:flex;flex-direction:column;height:auto;min-height:0}.bim-scene{height:390px;height:clamp(320px,48dvh,470px);flex:none;overflow:hidden}.bim-sidebar{padding:22px 20px;overflow:visible}.bim-sidebar h2{font-size:26px}.scene-label{top:12px;left:12px;font-size:12px}.scene-tools{left:12px;right:12px;bottom:12px;gap:12px;padding:10px 12px}.scene-tools button{font-size:13px;padding:8px 10px;min-height:44px}.section-control label{font-size:13px;gap:8px}
+.has-properties #bim-canvas{width:100%}.has-properties .scene-tools{right:12px}
+#bim-properties{position:fixed;top:auto;bottom:0;left:0;right:0;width:100%;max-height:54dvh;border:0;border-top:3px solid var(--timber);padding:18px 20px max(22px,env(safe-area-inset-bottom));box-shadow:0 -10px 40px #26313722;border-radius:8px 8px 0 0}.properties-head h2{font-size:24px}.bim-toggle{font-size:14px}.toggle-list{gap:7px}#bim-fallback,.no-script{inset:28px 16px auto;font-size:14px;padding:20px}#bim-fallback h2{font-size:24px;margin-bottom:16px}
+}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style>
+<script type="importmap">{"imports": {"three": "../_assets/eff5649581e5baa93d9c/vendor/three.module.min.js", "three/addons/": "../_assets/eff5649581e5baa93d9c/vendor/addons/"}}</script>
+</head><body class="bim-page"><a class="skip-link" href="#bim-controls">Liigu mudeli juhtnuppudeni</a>
+<header class="bim-head"><div><h1 class="viewer-title">Karjääri tn 21a</h1><p class="viewer-subtitle">BIM-mudel</p></div>
+<nav aria-label="Hoone lehed"><a class="viewer-home" href="../index.html">Hoone ülevaade</a>
+<a class="button solid" href="karjaari21a.ifc" download>Lae alla IFC <span class="download-meta">IFC4 / 9,2 MB</span></a></nav></header>
+<main class="bim-workbench" aria-label="BIM-mudeli vaatur">
+<section class="bim-scene" aria-label="Ruumiline mudel">
+<canvas id="bim-canvas" tabindex="0" role="application" aria-label="Pööratav BIM-mudel" aria-describedby="bim-hint"
+aria-keyshortcuts="ArrowLeft ArrowRight ArrowUp ArrowDown + - Home Enter Escape"></canvas>
+<div id="bim-load" role="status" aria-live="polite">Laen BIM-mudelit…</div>
+<div id="bim-fallback" hidden><h2>BIM-mudeli avamine</h2><p id="bim-error">3D-vaade vajab WebGL-i. Mudeli saad alla laadida ja avada BIM-programmis.</p>
+<a class="button" href="karjaari21a.ifc" download>Lae alla IFC</a></div>
+<noscript><style>#bim-load,#bim-canvas,.scene-tools{display:none}</style><div class="no-script"><p>Mudeli vaatamiseks lülita sisse JavaScript või ava IFC BIM-programmis.</p><a class="button" href="karjaari21a.ifc" download>Lae alla IFC</a></div></noscript>
+<div class="scene-label" aria-hidden="true">BIM / <span id="bim-count">2599</span> elementi</div>
+<div class="scene-tools"><div class="section-control"><label for="bim-section">Horisontaalne lõige <output id="section-value" for="bim-section">Terve hoone</output></label>
+<input type="range" id="bim-section" min="0" max="100" value="100" aria-label="Horisontaalse lõike kõrgus" disabled></div>
+<button type="button" class="control" id="bim-reset" disabled>Algvaade</button></div>
+<aside id="bim-properties" hidden aria-labelledby="properties-title"><div class="properties-head"><div><p class="note">Valitud element</p><h2 id="properties-title" tabindex="-1"></h2></div><button class="control" id="properties-close" type="button" aria-label="Sulge elemendi andmed">Sulge</button></div>
+<div id="properties-body"></div><button class="control" id="bim-locate" type="button">Leia mudelis</button></aside>
+</section>
+<section class="bim-sidebar" id="bim-controls" tabindex="-1" aria-labelledby="controls-title">
+<h2 id="controls-title">Mudeli osad</h2>
+<p class="note" id="bim-hint">Lohista pööramiseks, näpista või keri suumimiseks. Vali element, et näha selle andmeid.</p>
+<details class="keyboard-help"><summary>Klaviatuuriga juhtimine</summary><p>Nooleklahvid liigutavad vaadet, Ctrl + nooled pööravad. + ja − suumivad, Home taastab algvaate. Enter valib vaate keskmes oleva elemendi, Esc sulgeb andmed. Elemendi saad valida ka otsingutulemustest.</p></details>
+<label class="search-label" for="bim-search">Otsi nime või IFC-klassi järgi</label>
+<input id="bim-search" type="search" placeholder="Näiteks sein, IfcPipeSegment" autocomplete="off" disabled aria-controls="bim-results" aria-describedby="search-status">
+<p id="search-status" class="note" role="status" aria-live="polite"></p><ul id="bim-results" hidden aria-label="Leitud elemendid"></ul>
+<div id="bim-filters" role="group" aria-label="Mudeli nähtavus"></div>
+<div class="bim-about"><h3>IFC4 hoonemudel</h3><p>Vaata arhitektuuri ja tehnosüsteeme, lõika hoone lahti ning uuri elementide omadusi ja koguseid.</p>
+<p>Allalaaditav IFC sisaldab kogu BIM-mudelit. Selle avavad BIMcollab Zoom, Bonsai/Blender, Revit ja ArchiCAD.</p>
+<p class="note">Eelprojekt. Tehnosüsteemide lahendused täpsustuvad tööprojektis.</p></div>
+</section>
+<div class="sr-only" id="bim-status" role="status" aria-live="polite" aria-atomic="true"></div>
+</main>
+<script>
+window.BIM={"model": "../_assets/e26bccf1d72c5c3db74e/model.glb", "data": "../_assets/ae9d0fea106fd90e7197/elements.json", "draco": "../_assets/eff5649581e5baa93d9c/vendor/draco/", "bounds": [[-0.98, -0.719, -15.58], [17.36, 4.2, 0.98]], "categories": [{"id": "arch:IfcWindow", "label": "Aknad", "group": "Arhitektuur", "visible": true, "count": 4}, {"id": "arch:IfcRoof", "label": "Katus", "group": "Arhitektuur", "visible": true, "count": 53}, {"id": "arch:IfcBuildingElementProxy", "label": "Muud ehitusosad", "group": "Arhitektuur", "visible": true, "count": 14}, {"id": "arch:IfcColumn", "label": "Postid", "group": "Arhitektuur", "visible": true, "count": 4}, {"id": "arch:IfcSlab", "label": "Põrandad ja vahelaed", "group": "Arhitektuur", "visible": true, "count": 30}, {"id": "arch:IfcSpace", "label": "Ruumid", "group": "Arhitektuur", "visible": false, "count": 18}, {"id": "arch:IfcWall", "label": "Seinad", "group": "Arhitektuur", "visible": true, "count": 314}, {"id": "arch:IfcFurniture", "label": "Sisustus", "group": "Arhitektuur", "visible": true, "count": 24}, {"id": "arch:IfcDoor", "label": "Uksed", "group": "Arhitektuur", "visible": true, "count": 24}, {"id": "arch:IfcCovering", "label": "Viimistlus", "group": "Arhitektuur", "visible": true, "count": 30}, {"id": "arch:IfcFooting", "label": "Vundament", "group": "Arhitektuur", "visible": true, "count": 1}, {"id": "site", "label": "Krunt ja välisrajatised", "group": "Krunt", "visible": true, "count": 5}, {"id": "system:3lcZAUmWDDPPYLM6J$cFeF", "label": "Drenaaž", "group": "Tehnosüsteemid", "visible": true, "count": 28}, {"id": "system:1VdREV_JTFvx$loIeTwjvM", "label": "Elektriliitumine", "group": "Tehnosüsteemid", "visible": true, "count": 1}, {"id": "system:1oY3GBZFP5Ef0nUkykx2FE", "label": "KRT 1 Elekter", "group": "Tehnosüsteemid", "visible": true, "count": 59}, {"id": "system:0euQreLfn4wh9o9jtP2_aU", "label": "KRT 1 Heitõhk (H)", "group": "Tehnosüsteemid", "visible": true, "count": 3}, {"id": "system:2Ww2vGTPjDE9HXoj5z_08W", "label": "KRT 1 Jahutus (split)", "group": "Tehnosüsteemid", "visible": true, "count": 17}, {"id": "system:3OPWZmwavB4xVxb1r9a3FC", "label": "KRT 1 Kanalisatsioon (K1)", "group": "Tehnosüsteemid", "visible": true, "count": 68}, {"id": "system:3CIs7KJsnCpwnMEBSzBexR", "label": "KRT 1 Kanalisatsiooni tuulutus", "group": "Tehnosüsteemid", "visible": true, "count": 1}, {"id": "system:3VdHAcZj17gO1Xs8AkNxnI", "label": "KRT 1 Külm tarbevesi (V1)", "group": "Tehnosüsteemid", "visible": true, "count": 113}, {"id": "system:27BThQZTT4ChoWF2wN_uGa", "label": "KRT 1 Küttesõlm (SP→kollektor)", "group": "Tehnosüsteemid", "visible": true, "count": 103}, {"id": "system:310ECzEtHALu0s7UM0GoNz", "label": "KRT 1 Maakollektor (soolvesi)", "group": "Tehnosüsteemid", "visible": true, "count": 2}, {"id": "system:0M_nP15cjBJBSrkogKDjHa", "label": "KRT 1 Põrandaküte", "group": "Tehnosüsteemid", "visible": true, "count": 34}, {"id": "system:15dYvNAQH0qAOXDK_dusb$", "label": "KRT 1 Sissepuhe (S)", "group": "Tehnosüsteemid", "visible": true, "count": 37}, {"id": "system:3AgkpCzK53xBe6ewCA02Gg", "label": "KRT 1 Soe tarbevesi (V3)", "group": "Tehnosüsteemid", "visible": true, "count": 60}, {"id": "system:1TVayZEVX9XfjLBlpLKRlq", "label": "KRT 1 Valgustus", "group": "Tehnosüsteemid", "visible": true, "count": 473}, {"id": "system:34JAwEXyvBzPpYO_yNSSO_", "label": "KRT 1 Välisõhk (VÄ)", "group": "Tehnosüsteemid", "visible": true, "count": 7}, {"id": "system:2v1j10gkvEcwLnWgodcWpn", "label": "KRT 1 Väljatõmme (V)", "group": "Tehnosüsteemid", "visible": true, "count": 29}, {"id": "system:1taecSudD9aRSqbGI7z_9Y", "label": "KRT 2 Elekter", "group": "Tehnosüsteemid", "visible": true, "count": 59}, {"id": "system:2X3ys1HCTCvRFzJN95mmX9", "label": "KRT 2 Heitõhk (H)", "group": "Tehnosüsteemid", "visible": true, "count": 3}, {"id": "system:0gNKPUDtH7TB_YzOh3fuuO", "label": "KRT 2 Jahutus (split)", "group": "Tehnosüsteemid", "visible": true, "count": 17}, {"id": "system:3DQinZqr99nB3P9iVsF0Br", "label": "KRT 2 Kanalisatsioon (K1)", "group": "Tehnosüsteemid", "visible": true, "count": 68}, {"id": "system:0K$R2SrJ50c8TfudFXU0kg", "label": "KRT 2 Kanalisatsiooni tuulutus", "group": "Tehnosüsteemid", "visible": true, "count": 1}, {"id": "system:3ajf0k0s9AJPo9$elclOvA", "label": "KRT 2 Külm tarbevesi (V1)", "group": "Tehnosüsteemid", "visible": true, "count": 113}, {"id": "system:2uiRvcOc921vJU5qNrB8MA", "label": "KRT 2 Küttesõlm (SP→kollektor)", "group": "Tehnosüsteemid", "visible": true, "count": 103}, {"id": "system:2zPsDTm_fCwB$4W8$F6tW5", "label": "KRT 2 Maakollektor (soolvesi)", "group": "Tehnosüsteemid", "visible": true, "count": 2}, {"id": "system:1KGUM_jGr01w7SEnc6PpuO", "label": "KRT 2 Põrandaküte", "group": "Tehnosüsteemid", "visible": true, "count": 34}, {"id": "system:1lLSm7IFv65gT11TkfBsCT", "label": "KRT 2 Sissepuhe (S)", "group": "Tehnosüsteemid", "visible": true, "count": 37}, {"id": "system:2zadKLhmrANAQqwk51YrzI", "label": "KRT 2 Soe tarbevesi (V3)", "group": "Tehnosüsteemid", "visible": true, "count": 60}, {"id": "system:0kAzqSBPH77RZA07q$f30e", "label": "KRT 2 Valgustus", "group": "Tehnosüsteemid", "visible": true, "count": 473}, {"id": "system:1XWIuAbB19KxhcqOkoEibV", "label": "KRT 2 Välisõhk (VÄ)", "group": "Tehnosüsteemid", "visible": true, "count": 7}, {"id": "system:3EGqtI0rH8sQvFiV9QdpEq", "label": "KRT 2 Väljatõmme (V)", "group": "Tehnosüsteemid", "visible": true, "count": 29}, {"id": "system:1oYMiYAqb8XBOr9CzJiUYK", "label": "Kanalisatsiooni liitumine", "group": "Tehnosüsteemid", "visible": true, "count": 3}, {"id": "system:0brZq90jj7KffIPSiCqSc2", "label": "Sadevesi", "group": "Tehnosüsteemid", "visible": true, "count": 57}, {"id": "system:06GSLTODH36ACXnYP3t5aJ", "label": "Veevarustuse liitumine", "group": "Tehnosüsteemid", "visible": true, "count": 5}], "elements": 2599};
+(() => {
+  const timer=setTimeout(() => fail('Mudeli laadimine võtab liiga kaua aega. Laadi IFC alla või proovi lehte uuesti avada.'),60000);
+  function fail(message) {
+    clearTimeout(timer); document.getElementById('bim-error').textContent=message;
+    document.getElementById('bim-fallback').hidden=false;document.getElementById('bim-load').hidden=true;
+    document.getElementById('bim-canvas').hidden=true; window.READY=true;
+  }
+  window.BIM_BOOT={fail,done:() => clearTimeout(timer)};
+})();
+</script>
+<script type="module">import * as THREE from 'three';
+import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
+import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
+import {DRACOLoader} from 'three/addons/loaders/DRACOLoader.js';
+
+const C=window.BIM, $=id => document.getElementById(id);
+const canvas=$('bim-canvas'), section=$('bim-section'), properties=$('bim-properties');
+const number=new Intl.NumberFormat('et-EE',{maximumFractionDigits:3});
+const text=(tag,value,className) => {const node=document.createElement(tag);node.textContent=value;if(className)node.className=className;return node;};
+const fail=message => {window.BIM_BOOT.fail(message);};
+let renderer, decoder;
+try {
+  renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:false});
+  renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+  renderer.setClearColor(0xe7ebea);
+  renderer.outputColorSpace=THREE.SRGBColorSpace;
+  const scene=new THREE.Scene();
+  const camera=new THREE.PerspectiveCamera(40,1,0.2,500);
+  const controls=new OrbitControls(camera,canvas);
+  controls.enableDamping=false;controls.maxPolarAngle=Math.PI*0.96;
+  controls.listenToKeyEvents(canvas);
+  const clip=new THREE.Plane(new THREE.Vector3(0,-1,0),10000);
+  renderer.clippingPlanes=[clip];renderer.localClippingEnabled=true;
+  scene.add(new THREE.HemisphereLight(0xffffff,0x6b7370,2.5));
+  const sun=new THREE.DirectionalLight(0xffffff,2.5);sun.position.set(-15,30,20);scene.add(sun);
+  const fill=new THREE.DirectionalLight(0xffffff,0.7);fill.position.set(20,10,-20);scene.add(fill);
+  const loader=new GLTFLoader();decoder=new DRACOLoader();decoder.setDecoderPath(C.draco);decoder.setWorkerLimit(2);loader.setDRACOLoader(decoder);
+  const [model,response]=await Promise.all([loader.loadAsync(C.model),fetch(C.data)]);
+  if(!response.ok)throw Error('BIM metadata HTTP '+response.status);
+  const data=await response.json();
+  const entries=Object.entries(data).filter(([,entry]) => entry.bounds);
+  const byId=new Map(entries.map(([gid,entry]) => [entry.id,{...entry,gid}]));
+  const maxId=Math.max(...byId.keys());
+  const width=Math.min(renderer.capabilities.maxTextureSize,1024),height=Math.ceil((maxId+1)/width);
+  const visibility=new Uint8Array(width*height*4);
+  const visibleTexture=new THREE.DataTexture(visibility,width,height,THREE.RGBAFormat,THREE.UnsignedByteType);
+  visibleTexture.minFilter=THREE.NearestFilter;visibleTexture.magFilter=THREE.NearestFilter;
+  const uniforms={bimVisible:{value:visibleTexture},bimSize:{value:new THREE.Vector2(width,height)},bimSelected:{value:-1}};
+  const meshes=[];let scheduled=false,selected=null,selectionOpener=null;
+  function render(){if(scheduled)return;scheduled=true;requestAnimationFrame(() => {scheduled=false;renderer.render(scene,camera);});}
+  controls.addEventListener('change',render);
+  model.scene.traverse(mesh => {
+    if(!mesh.isMesh)return;
+    const elementIds=mesh.geometry.getAttribute('_element_id');
+    if(!elementIds)throw Error('Missing IFC element ids');
+    // WebGL binds Uint32 attributes with vertexAttribIPointer. The standard
+    // material shader needs floats; IFC ids here are exact integers < 2^24.
+    if(maxId>=2**24)throw Error('Too many BIM elements for exact shader ids');
+    mesh.geometry.setAttribute('_element_id',new THREE.Float32BufferAttribute(elementIds.array,1));
+    const materials=Array.isArray(mesh.material)?mesh.material:[mesh.material];
+    for(const material of materials){
+      material.flatShading=true;
+      material.onBeforeCompile=shader => {
+        Object.assign(shader.uniforms,uniforms);
+        shader.vertexShader=shader.vertexShader.replace('#include <common>', '#include <common>\nattribute float _element_id; varying float bimElement;');
+        shader.vertexShader=shader.vertexShader.replace('#include <begin_vertex>', '#include <begin_vertex>\nbimElement=_element_id;');
+        shader.fragmentShader=shader.fragmentShader.replace('#include <common>', '#include <common>\nuniform sampler2D bimVisible;uniform vec2 bimSize;uniform float bimSelected;varying float bimElement;');
+        shader.fragmentShader=shader.fragmentShader.replace('#include <color_fragment>', `#include <color_fragment>
+          vec2 bimUV=(vec2(mod(bimElement,bimSize.x),floor(bimElement/bimSize.x))+0.5)/bimSize;
+          if(texture2D(bimVisible,bimUV).r<0.5)discard;
+          if(abs(bimElement-bimSelected)<0.5){diffuseColor.rgb=vec3(0.92,0.40,0.055);diffuseColor.a=1.0;}`);
+      };
+      material.customProgramCacheKey=() => 'housebim-element-v1';
+    }
+    meshes.push(mesh);
+  });
+  scene.add(model.scene);
+  const bounds=new THREE.Box3(new THREE.Vector3(...C.bounds[0]),new THREE.Vector3(...C.bounds[1]));
+  const range={min:Math.min(-2,C.bounds[0][1]-0.1),max:C.bounds[1][1]+0.2};
+  section.min=range.min.toFixed(2);section.max=range.max.toFixed(2);section.step='0.05';section.value=section.max;
+  function updateSection(){
+    const value=Number(section.value),full=value>=Number(section.max)-0.01;
+    clip.constant=full?10000:value;
+    const label=full?'Terve hoone':number.format(value)+' m';
+    $('section-value').textContent=label;section.setAttribute('aria-valuetext',label);render();
+  }
+  section.addEventListener('input',updateSection);updateSection();
+  function frame(box,defaultView=false){
+    const target=box.getCenter(new THREE.Vector3()),extent=box.getSize(new THREE.Vector3());
+    const radius=Math.max(extent.length()/2,defaultView?10:1.5);
+    const verticalFov=THREE.MathUtils.degToRad(camera.fov);
+    const horizontalFov=2*Math.atan(Math.tan(verticalFov/2)*camera.aspect);
+    const distance=radius/Math.sin(Math.min(verticalFov,horizontalFov)/2)*1.08;
+    const direction=defaultView?new THREE.Vector3(-0.80,0.72,1):camera.position.clone().sub(controls.target).normalize();
+    camera.position.copy(target).addScaledVector(direction.normalize(),distance);
+    controls.target.copy(target);controls.minDistance=0.3;controls.maxDistance=Math.max(200,distance*5);controls.update();render();
+  }
+  function reset(){section.value=section.max;updateSection();frame(bounds,true);}
+  $('bim-reset').addEventListener('click',reset);
+  let oldWidth=0;
+  new ResizeObserver(() => {
+    const rect=canvas.getBoundingClientRect();if(!rect.width||!rect.height)return;
+    renderer.setSize(rect.width,rect.height,false);camera.aspect=rect.width/rect.height;camera.updateProjectionMatrix();
+    if(!oldWidth){reset();oldWidth=rect.width;}render();
+  }).observe(canvas);
+  const active=new Map(C.categories.map(c => [c.id,c.visible]));
+  const toggles=new Map();
+  function updateVisibility(){
+    let count=0;
+    for(const [,entry] of entries){const visible=entry.categories.some(c => active.get(c));visibility[entry.id*4]=visible?255:0;if(visible)count++;}
+    visibleTexture.needsUpdate=true;$('bim-count').textContent=number.format(count);
+    for(const [key,button] of toggles)button.setAttribute('aria-pressed',String(active.get(key)));
+    if(selected&&!visibility[selected.id*4])closeProperties(false);
+    render();
+  }
+  for(const groupName of ['Arhitektuur','Tehnosüsteemid','Krunt']){
+    const items=C.categories.filter(c => c.group===groupName);if(!items.length)continue;
+    const group=document.createElement('details');group.className='filter-group';group.open=groupName==='Arhitektuur';
+    group.append(text('summary',groupName));
+    const heading=document.createElement('div');heading.className='filter-heading';heading.append(text('span','Nähtavad osad','note'));
+    const toggleAll=text('button','Peida kõik');toggleAll.type='button';toggleAll.setAttribute('aria-label',groupName+': näita või peida kõik');
+    toggleAll.onclick=()=>{const on=items.some(c=>active.get(c.id));items.forEach(c=>active.set(c.id,!on));updateVisibility();};heading.append(toggleAll);group.append(heading);
+    const list=document.createElement('div');list.className='toggle-list';list.setAttribute('role','group');list.setAttribute('aria-label',groupName);
+    for(const c of items){
+      const button=document.createElement('button');button.type='button';button.className='bim-toggle';button.dataset.category=c.id;
+      button.append(text('span',c.label),text('small',c.count));button.setAttribute('aria-label',c.label+', '+c.count+' elementi');
+      button.onclick=()=>{active.set(c.id,!active.get(c.id));updateVisibility();};list.append(button);toggles.set(c.id,button);
+    }
+    group.append(list);$('bim-filters').append(group);
+    // Update the group action's wording when individual parts change, too.
+    const observer=new MutationObserver(()=>{toggleAll.textContent=items.some(c=>active.get(c.id))?'Peida kõik':'Näita kõik';});
+    observer.observe(list,{subtree:true,attributes:true,attributeFilter:['aria-pressed']});
+  }
+  updateVisibility();
+  function valueText(value){if(value===true)return 'Jah';if(value===false)return 'Ei';if(typeof value==='number')return number.format(value);if(typeof value==='object')return JSON.stringify(value);return String(value);}
+  function row(dl,label,value,cls){if(value===null||value===undefined||value==='')return;dl.append(text('dt',label),text('dd',valueText(value),cls));}
+  function closeProperties(restore=true){
+    properties.hidden=true;canvas.parentElement.classList.remove('has-properties');uniforms.bimSelected.value=-1;selected=null;render();
+    if(restore)(selectionOpener?.isConnected?selectionOpener:canvas).focus({preventScroll:true});
+  }
+  $('properties-close').onclick=()=>closeProperties();
+  function locate(entry){frame(new THREE.Box3(new THREE.Vector3(...entry.bounds[0]),new THREE.Vector3(...entry.bounds[1])));}
+  function select(gid,opener=canvas,focus=false){
+    const entry=data[gid];if(!entry?.bounds)return;
+    selected={...entry,gid};selectionOpener=opener;
+    if(!entry.categories.some(c=>active.get(c))){entry.categories.forEach(c=>active.set(c,true));updateVisibility();}
+    if(focus&&Number(section.value)<entry.bounds[1][1]){section.value=Math.min(Number(section.max),entry.bounds[1][1]+0.05);updateSection();}
+    uniforms.bimSelected.value=entry.id;
+    $('properties-title').textContent=entry.name||entry.class;
+    const body=$('properties-body');body.replaceChildren();
+    const dl=document.createElement('dl');
+    row(dl,'IFC-klass',entry.class);row(dl,'GlobalId',gid,'globalid');row(dl,'Tüüp',entry.type||entry.predefined);
+    row(dl,'Korrus',entry.storey);row(dl,'Korter',entry.apartment);
+    row(dl,'Süsteem',entry.systems.map(s=>s.name+(s.type?' ('+s.type+')':'')).join(', '));body.append(dl);
+    for(const [label,sets] of [['Omadused',entry.psets],['Kogused',entry.quantities]]){
+      if(!Object.keys(sets).length)continue;body.append(text('h3',label));
+      let first=true;
+      for(const [name,values] of Object.entries(sets)){
+        const details=document.createElement('details');details.open=first||label==='Kogused'||name.startsWith('EE_');first=false;
+        details.append(text('summary',name));const list=document.createElement('dl');
+        for(const [key,value] of Object.entries(values))row(list,key,value);details.append(list);body.append(details);
+      }
+    }
+    properties.hidden=false;canvas.parentElement.classList.add('has-properties');$('bim-locate').onclick=()=>locate(entry);
+    if(focus)locate(entry);
+    $('bim-status').textContent='Valitud: '+(entry.name||entry.class);
+    $('properties-title').focus({preventScroll:true});render();
+  }
+  const raycaster=new THREE.Raycaster();
+  function pick(x,y){
+    raycaster.setFromCamera(new THREE.Vector2(x,y),camera);
+    for(const hit of raycaster.intersectObjects(meshes,false)){
+      const id=Math.round(hit.object.geometry.getAttribute('_element_id').getX(hit.face.a));
+      if(!visibility[id*4]||clip.distanceToPoint(hit.point)<0)continue;
+      const entry=byId.get(id);if(entry){select(entry.gid);return entry.gid;}
+    }
+    closeProperties(false);return null;
+  }
+  let down=null;
+  const pointers=new Set();
+  canvas.addEventListener('pointerdown',e=>{pointers.add(e.pointerId);down=pointers.size===1?{x:e.clientX,y:e.clientY,id:e.pointerId}:null;});
+  canvas.addEventListener('pointercancel',e=>{pointers.delete(e.pointerId);down=null;});
+  canvas.addEventListener('pointerup',e=>{
+    pointers.delete(e.pointerId);
+    if(!down||down.id!==e.pointerId)return;
+    const distance=Math.hypot(e.clientX-down.x,e.clientY-down.y);down=null;if(distance>6||e.button!==0)return;
+    const rect=canvas.getBoundingClientRect();pick((e.clientX-rect.left)/rect.width*2-1,-(e.clientY-rect.top)/rect.height*2+1);
+  });
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&selected){e.preventDefault();closeProperties();}});
+  canvas.addEventListener('keydown',e=>{
+    if(e.key==='Home'){e.preventDefault();reset();}
+    if(['+','=','-','_'].includes(e.key)){e.preventDefault();camera.position.sub(controls.target).multiplyScalar(['-','_'].includes(e.key)?1.15:0.85).add(controls.target);controls.update();render();}
+    if(e.key==='Enter'){e.preventDefault();pick(0,0);}
+  });
+  let searchTimer;
+  function search(){
+    const query=$('bim-search').value.trim().toLocaleLowerCase('et');
+    const list=$('bim-results');list.replaceChildren();list.hidden=!query;
+    if(!query){$('search-status').textContent='';return;}
+    const matches=entries.filter(([gid,e])=>[e.name,e.class,e.type,gid].some(v=>v.toLocaleLowerCase('et').includes(query)));
+    $('search-status').textContent=matches.length?'Leitud '+matches.length+' elementi'+(matches.length>50?'. Näitan esimest 50. Täpsusta otsingut.':'.'):'Elemente ei leitud.';
+    for(const [gid,e] of matches.slice(0,50)){
+      const li=document.createElement('li'),button=document.createElement('button');button.type='button';
+      button.append(text('span',e.name||e.class),text('small',[e.class,e.apartment].filter(Boolean).join(' / ')));
+      button.onclick=()=>select(gid,button,true);li.append(button);list.append(li);
+    }
+  }
+  $('bim-search').addEventListener('input',()=>{clearTimeout(searchTimer);searchTimer=setTimeout(search,100);});
+  canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();fail('3D-vaade katkes. Laadi IFC alla või ava leht uuesti.');});
+  section.disabled=false;$('bim-reset').disabled=false;$('bim-search').disabled=false;
+  // Mark ready only after the first compiled, rendered model frame.
+  await new Promise(resolve=>requestAnimationFrame(resolve));renderer.render(scene,camera);
+  $('bim-load').hidden=true;window.BIM_BOOT.done();decoder.dispose();
+  window.BIM_METRICS={readyMs:Math.round(performance.now()),elements:entries.length,drawCalls:renderer.info.render.calls,triangles:renderer.info.render.triangles};
+  window.READY=true;
+} catch(error){
+  console.error('BIM viewer:',error);decoder?.dispose();renderer?.dispose();
+  fail('BIM-mudeli 3D-vaadet ei saa selles brauseris avada. Laadi IFC alla ja ava see BIM-programmis.');
+}
+</script>
+</body></html>
