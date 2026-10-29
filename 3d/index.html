@@ -1,0 +1,252 @@
+<!doctype html><html lang="et"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>3D jalutuskäik — Paarismaja Kose alevikus</title><style>
+*{box-sizing:border-box}body{margin:0;font-family:var(--font-sans,-apple-system,Segoe UI,Roboto,sans-serif)}
+.stage{position:relative;width:100%;overflow:hidden;background:linear-gradient(#9cc3e6,#e8eef2)}
+canvas{display:block;width:100%;height:100%;touch-action:none;outline:none}
+.top{position:absolute;left:14px;top:12px;right:14px;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.55);pointer-events:none}
+.top b{display:block;font-size:clamp(16px,2.6vw,22px)}.top span{font-size:12.5px;opacity:.95}
+.ui{position:absolute;left:0;right:0;bottom:0;padding:10px 12px 12px;background:linear-gradient(transparent,rgba(0,0,0,.45))}
+#rooms{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}#rooms::-webkit-scrollbar{display:none}
+#rooms button{flex:0 0 auto;font:inherit;font-size:14px;padding:8px 13px;border-radius:999px;border:0;
+background:rgba(255,255,255,.92);color:#1d1d1b;cursor:pointer}
+#rooms button.on{background:#b0703c;color:#fff}
+#hint{margin-top:7px;font-size:12px;color:#fff;opacity:.9;text-shadow:0 1px 3px rgba(0,0,0,.6)}
+#load{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
+background:rgba(207,217,226,.92);color:#33465a;font-size:14px}
+#load .track{width:220px;height:6px;border-radius:3px;background:rgba(0,0,0,.12);overflow:hidden}
+#bar{height:100%;width:0;background:#b0703c;transition:width .3s}
+html,body{height:100%;background:#cfd9e2}.stage{height:100dvh}</style>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}</script>
+</head><body><div class="stage"><canvas id="c" tabindex="0"></canvas>
+<div class="top"><b>Paarismaja Kose alevikus</b><span>3D mudel · pööra, suumi sisse või vali tuba</span></div>
+<div class="ui"><div id="rooms"></div><div id="hint"></div></div>
+<div id="load"><div id="msg">Laen 3D mudelit…</div><div class="track"><div id="bar"></div></div></div></div>
+<script>window.WALK = {"packed": false, "model": "karjaari21a_maja.glb", "sky": "taevas.jpg", "sky_scale": 2.0, "lightmaps": {"0": "lm0.jpg", "1": "lm1.jpg", "2": "lm2.jpg"}, "lightmaps_lo": {"0": "lm0_lo.jpg", "1": "lm1_lo.jpg", "2": "lm2_lo.jpg"}, "lm_scale": 2.0, "vc_scale": 2.0, "lawn_light": [1.6115, 1.6507, 1.7112], "house": [0.0, 0.0, 16.3799991607666, 14.600000381469727], "center": [8.1899995803833, 7.300000190734863], "start": {"eye": [19.983598976135255, 29.014399642944333, 1.7], "target": [8.1899995803833, 7.300000190734863, 1.6]}, "floor_z": 0.0, "rooms": [{"id": "1-06", "name": "Elutuba/köök", "spawn": [2.3, 12.45], "look": [3.3, 6.9]}, {"id": "1-07", "name": "Tuba I", "spawn": [6.56, 10.88], "look": [6.554, 14.246]}, {"id": "1-08", "name": "Tuba II", "spawn": [0.96, 3.96], "look": [3.12, 1.68]}, {"id": "1-09", "name": "Tuba III", "spawn": [6.56, 2.6], "look": [6.554, 0.354]}, {"id": "1-01", "name": "Esik", "spawn": [4.4, 6.32], "look": [3.92, 1.4]}, {"id": "1-03", "name": "Pesuruum", "spawn": [7.44, 6.2], "look": [5.4, 7.88]}, {"id": "1-04", "name": "Saun", "spawn": [6.92, 5.36], "look": [7.04, 5.24]}, {"id": "1-02", "name": "WC", "spawn": [7.2, 8.92], "look": [6.36, 9.28]}, {"id": "1-05", "name": "Tehnoruum", "spawn": [3.08, 5.24], "look": [0.354, 5.446]}], "zones": [[8.33, 0.35, 11.33, 3.75, 2.052, {"type": "Polygon", "coordinates": [[[11.32588005065918, 0.35447341203689575], [8.32588005065918, 0.35447341203689575], [8.32588005065918, 3.7544734477996826], [11.32588005065918, 3.7544734477996826], [11.32588005065918, 0.35447341203689575]]]}], [12.91, 4.65, 16.03, 6.25, 1.1, {"type": "Polygon", "coordinates": [[[16.025880813598633, 4.646473407745361], [12.909880638122559, 4.646473407745361], [12.909880638122559, 6.24647331237793], [16.025880813598633, 6.24647331237793], [16.025880813598633, 4.646473407745361]]]}], [8.41, 3.93, 10.55, 5.37, 2.6, {"type": "Polygon", "coordinates": [[[10.545880317687988, 3.926473379135132], [8.405879974365234, 3.926473379135132], [8.405879974365234, 5.366473197937012], [10.545880317687988, 5.366473197937012], [10.545880317687988, 3.926473379135132]]]}], [12.91, 1.35, 16.03, 4.55, 2.079, {"type": "Polygon", "coordinates": [[[16.025880813598633, 1.3544734716415405], [12.909880638122559, 1.3544734716415405], [12.909880638122559, 4.554473400115967], [16.025880813598633, 4.554473400115967], [16.025880813598633, 1.3544734716415405]]]}], [8.33, 9.72, 11.33, 14.25, 1.164, {"type": "Polygon", "coordinates": [[[11.32588005065918, 9.72247314453125], [8.32588005065918, 9.72247314453125], [8.32588005065918, 14.24647331237793], [11.32588005065918, 14.24647331237793], [11.32588005065918, 9.72247314453125]]]}], [8.33, 8.33, 10.13, 9.63, 1.899, {"type": "Polygon", "coordinates": [[[10.125880241394043, 8.330472946166992], [8.32588005065918, 8.330472946166992], [8.32588005065918, 9.630473136901855], [10.125880241394043, 9.630473136901855], [10.125880241394043, 8.330472946166992]]]}], [8.33, 5.54, 11.33, 8.24, 1.432, {"type": "Polygon", "coordinates": [[[8.32588005065918, 5.538473606109619], [8.32588005065918, 8.238473892211914], [11.32588005065918, 8.238473892211914], [11.32588005065918, 6.530473232269287], [10.625880241394043, 6.530473232269287], [10.625880241394043, 5.538473606109619], [8.32588005065918, 5.538473606109619]]]}], [5.05, 0.35, 8.05, 3.75, 2.064, {"type": "Polygon", "coordinates": [[[5.053880214691162, 3.7544734477996826], [8.05388069152832, 3.7544734477996826], [8.05388069152832, 0.35447341203689575], [5.053880214691162, 0.35447341203689575], [5.053880214691162, 3.7544734477996826]]]}], [0.35, 1.35, 3.47, 4.55, 2.015, {"type": "Polygon", "coordinates": [[[0.35388022661209106, 1.3544734716415405], [0.35388022661209106, 4.554473400115967], [3.4698801040649414, 4.554473400115967], [3.4698801040649414, 1.3544734716415405], [0.35388022661209106, 1.3544734716415405]]]}], [10.22, 6.34, 16.03, 12.75, 1.245, {"type": "Polygon", "coordinates": [[[11.417880058288574, 8.330472946166992], [10.217880249023438, 8.330472946166992], [10.217880249023438, 9.630473136901855], [11.417880058288574, 9.630473136901855], [11.417880058288574, 12.74647331237793], [16.025880813598633, 12.74647331237793], [16.025880813598633, 6.338473320007324], [12.817880630493164, 6.338473320007324], [11.417880058288574, 6.438473224639893], [11.417880058288574, 7.538473606109619], [11.417880058288574, 8.330472946166992]]]}], [5.05, 9.72, 8.05, 14.25, 0.898, {"type": "Polygon", "coordinates": [[[5.053880214691162, 14.24647331237793], [8.05388069152832, 14.24647331237793], [8.05388069152832, 9.72247314453125], [5.053880214691162, 9.72247314453125], [5.053880214691162, 14.24647331237793]]]}], [0.35, 4.65, 3.47, 6.25, 1.099, {"type": "Polygon", "coordinates": [[[0.35388022661209106, 4.646473407745361], [0.35388022661209106, 6.24647331237793], [3.4698801040649414, 6.24647331237793], [3.4698801040649414, 4.646473407745361], [0.35388022661209106, 4.646473407745361]]]}], [5.83, 3.93, 7.97, 5.37, 2.6, {"type": "Polygon", "coordinates": [[[7.973880290985107, 3.926473379135132], [5.833880424499512, 3.926473379135132], [5.833880424499512, 5.366473197937012], [7.973880290985107, 5.366473197937012], [7.973880290985107, 3.926473379135132]]]}], [6.25, 8.33, 8.05, 9.63, 2.6, {"type": "Polygon", "coordinates": [[[8.05388069152832, 8.330472946166992], [6.253880023956299, 8.330472946166992], [6.253880023956299, 9.630473136901855], [8.05388069152832, 9.630473136901855], [8.05388069152832, 8.330472946166992]]]}], [10.72, 1.35, 12.82, 6.44, 1.246, {"type": "Polygon", "coordinates": [[[11.417880058288574, 3.846473455429077], [10.717880249023438, 3.846473455429077], [10.717880249023438, 6.438473224639893], [11.417880058288574, 6.438473224639893], [12.817880630493164, 6.338473320007324], [12.817880630493164, 1.3544734716415405], [11.417880058288574, 1.3544734716415405], [11.417880058288574, 3.846473455429077]]]}], [5.05, 5.54, 8.05, 8.24, 1.465, {"type": "Polygon", "coordinates": [[[5.753880023956299, 6.530473232269287], [5.053880214691162, 6.530473232269287], [5.053880214691162, 8.238473892211914], [8.05388069152832, 8.238473892211914], [8.05388069152832, 5.538473606109619], [5.753880023956299, 5.538473606109619], [5.753880023956299, 6.530473232269287]]]}], [3.56, 1.35, 5.66, 6.44, 1.216, {"type": "Polygon", "coordinates": [[[3.561880350112915, 6.338473320007324], [4.961880207061768, 6.438473224639893], [5.661880016326904, 6.438473224639893], [5.661880016326904, 3.846473455429077], [4.961880207061768, 3.846473455429077], [4.961880207061768, 1.3544734716415405], [3.561880350112915, 1.3544734716415405], [3.561880350112915, 6.338473320007324]]]}], [0.35, 6.34, 6.16, 12.75, 0.901, {"type": "Polygon", "coordinates": [[[0.35388022661209106, 12.74647331237793], [4.961880207061768, 12.74647331237793], [4.961880207061768, 9.630473136901855], [6.161880016326904, 9.630473136901855], [6.161880016326904, 8.330472946166992], [4.961880207061768, 8.330472946166992], [4.961880207061768, 7.538473606109619], [4.961880207061768, 6.438473224639893], [3.561880111694336, 6.338473320007324], [0.35388022661209106, 6.338473320007324], [0.35388022661209106, 12.74647331237793]]]}]]};</script>
+<script type="module">
+// Walk-through viewer for the baked house model (three.js).
+// Everything is unlit: colour = albedo texture x light baked in Blender/Cycles (lightmaps or vertex colours),
+// so it runs on cheap phones. Config comes from window.WALK (written by publish/web3d.py).
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+const C = window.WALK;
+const $ = (id) => document.getElementById(id);
+const q = new URLSearchParams(location.search);
+const LOW = q.get('q') === 'lo' || (q.get('q') !== 'hi' &&
+  ((navigator.deviceMemory || 8) <= 4 || (navigator.hardwareConcurrency || 8) <= 4));
+const T = (x, y, z = 0) => new THREE.Vector3(x, z, -y);        // Blender (z up) -> three (y up)
+const EXPO_OUT = 0.5, EXPO_IN = 1.4;
+
+// ------------------------------------------------------------------ renderer, scene
+const canvas = $('c');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: !LOW, powerPreference: 'high-performance' });
+renderer.setPixelRatio(Math.min(devicePixelRatio, LOW ? 1 : 1.75));
+renderer.toneMapping = THREE.AgXToneMapping;
+renderer.toneMappingExposure = EXPO_OUT;
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(45, 1, 0.05, 3000);
+
+async function unpack(src) {           // previews: the .glb travels inside a lossless PNG
+  const img = new Image(); img.src = src; await img.decode();
+  const cv = document.createElement('canvas'); cv.width = img.width; cv.height = img.height;
+  const g = cv.getContext('2d', { willReadFrequently: true }); g.drawImage(img, 0, 0);
+  const d = g.getImageData(0, 0, cv.width, cv.height).data, n = cv.width * cv.height, b = new Uint8Array(n * 3);
+  for (let i = 0, j = 0; i < n; i++) { b[j++] = d[4 * i]; b[j++] = d[4 * i + 1]; b[j++] = d[4 * i + 2]; }
+  const len = b[0] | (b[1] << 8) | (b[2] << 16) | (b[3] << 24);
+  return URL.createObjectURL(new Blob([b.subarray(4, 4 + len)], { type: 'model/gltf-binary' }));
+}
+
+const progress = { done: 0, total: 0 };
+function step(label) {
+  progress.done++;
+  $('bar').style.width = `${Math.round(100 * progress.done / progress.total)}%`;
+  if (label) $('msg').textContent = label;
+}
+
+// ------------------------------------------------------------------ model
+async function loadModel() {
+  const tl = new THREE.TextureLoader();
+  const tex = async (url, srgb = true, flip = false) => {
+    const t = await tl.loadAsync(url);
+    t.flipY = flip; t.colorSpace = srgb ? THREE.SRGBColorSpace : THREE.NoColorSpace;
+    t.anisotropy = LOW ? 1 : 4;
+    return t;
+  };
+  progress.total = 2 + Object.keys(C.lightmaps).length;
+  const sky = await tex(C.sky, true, true);
+  sky.mapping = THREE.EquirectangularReflectionMapping;
+  scene.background = sky;
+  scene.backgroundIntensity = C.sky_scale;
+  step('Taevas');
+  const lms = {};
+  for (const [k, v] of Object.entries(LOW ? C.lightmaps_lo : C.lightmaps)) {
+    lms[k] = await tex(v); lms[k].channel = 1; step('Valgus');
+  }
+  const loader = new GLTFLoader();
+  if (!C.packed) loader.setDRACOLoader(new DRACOLoader().setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.7/'));
+  const gltf = await loader.loadAsync(C.packed ? await unpack(C.model) : C.model);
+  step('Mudel');
+  const lmI = C.lm_scale * Math.PI;    // MeshBasicMaterial divides the light map by PI
+  const warm = new THREE.Color(1.0, 0.86, 0.66).multiplyScalar(4);
+  gltf.scene.traverse((o) => {
+    if (!o.isMesh) return;
+    const src = o.material, [key, mode] = src.name.split('|');
+    const map = src.map || null, base = map ? new THREE.Color(1, 1, 1) : src.color.clone();
+    let m;
+    if (mode === 'hidden') { o.visible = false; return; } // compatibility with older exports
+    if (mode === 'glass') {
+      m = new THREE.MeshBasicMaterial({ color: key === 'saunaklaas' ? 0x5a4030 : 0x18242a, transparent: true,
+        opacity: 0.32, envMap: sky, reflectivity: 0.3, combine: THREE.MixOperation, depthWrite: false,
+        side: THREE.DoubleSide });
+    } else if (mode === 'emit') {
+      m = new THREE.MeshBasicMaterial({ color: warm });
+    } else if (mode === 'const') {
+      m = new THREE.MeshBasicMaterial({ map, color: base.multiply(new THREE.Color(...C.lawn_light)) });
+    } else if (mode.startsWith('lm')) {
+      m = new THREE.MeshBasicMaterial({ map, color: base, vertexColors: true, lightMap: lms[mode.slice(2)],
+        lightMapIntensity: lmI });
+    } else {                           // 'vc' / 'dark': light is in the vertex colours
+      m = new THREE.MeshBasicMaterial({ map, color: base.multiplyScalar(C.vc_scale), vertexColors: true });
+    }
+    if (q.get('debug') === 'mat') {     // one flat colour per material, to see what is what
+      let h = 0; for (const ch of src.name) h = (h * 31 + ch.charCodeAt(0)) >>> 0;
+      m = new THREE.MeshBasicMaterial({ color: new THREE.Color().setHSL((h % 360) / 360, 0.7, 0.5) });
+      console.log('mat', src.name, '#' + m.color.getHexString());
+    }
+    src.dispose();
+    o.material = m;
+    o.matrixAutoUpdate = false;
+  });
+  scene.add(gltf.scene);
+}
+
+// ------------------------------------------------------------------ controls
+const orbit = new OrbitControls(camera, canvas);
+orbit.enableDamping = true;
+orbit.minDistance = 0.2; orbit.maxDistance = 70;
+orbit.zoomToCursor = true;             // scroll/pinch towards a window and you zoom into the house
+orbit.maxPolarAngle = Math.PI * 0.495;
+function startEye() {                  // portrait screens: step back so the whole house fits
+  const eye = T(...C.start.eye), target = T(...C.start.target);
+  const k = camera.aspect < 1 ? Math.min(1.9, 1 / Math.pow(camera.aspect, 0.75)) : 1;
+  return [eye.sub(target).multiplyScalar(k).add(target), target];
+}
+
+let tween = null, activeRoom = '';
+
+function fov(indoor = activeRoom !== '') {
+  const a = camera.aspect;
+  return indoor ? (a >= 1 ? 66 : 80) : (a >= 1 ? 45 : 62);
+}
+
+function flyTo(pos, quat, fovTo, done) {
+  tween = { p0: camera.position.clone(), q0: camera.quaternion.clone(), f0: camera.fov,
+    p1: pos, q1: quat, f1: fovTo, t: 0, done };
+}
+
+function enterRoom(room) {             // room button: fly in, then orbit around the room's middle
+  const [bx, by] = room.spawn, [lookX, lookY] = room.look, floor = C.floor_z || 0;
+  const eye = T(bx, by, floor + 1.6), target = T((bx + lookX) / 2, (by + lookY) / 2, floor + 1.3);
+  const m = new THREE.Matrix4().lookAt(eye, target, new THREE.Vector3(0, 1, 0));
+  orbit.enabled = false;
+  flyTo(eye, new THREE.Quaternion().setFromRotationMatrix(m), fov(true), () => {
+    orbit.target.copy(target); orbit.maxPolarAngle = Math.PI * 0.85; orbit.enabled = true; orbit.update();
+  });
+  selectRoom(room.id);
+}
+
+function showExterior() {
+  orbit.enabled = false;
+  const [eye, target] = startEye();
+  const m = new THREE.Matrix4().lookAt(eye, target, new THREE.Vector3(0, 1, 0));
+  flyTo(eye, new THREE.Quaternion().setFromRotationMatrix(m), fov(false), () => {
+    orbit.target.copy(target); orbit.maxPolarAngle = Math.PI * 0.495; orbit.enabled = true; orbit.update();
+  });
+  selectRoom('');
+}
+
+function inRing(x, y, ring) {
+  let inside = false;
+  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+    const [xi, yi] = ring[i], [xj, yj] = ring[j];
+    if ((yi > y) !== (yj > y) && x < (xj - xi) * (y - yi) / (yj - yi) + xi) inside = !inside;
+  }
+  return inside;
+}
+
+function inPolygon(x, y, geometry) {
+  const polygons = geometry.type === 'Polygon' ? [geometry.coordinates] : geometry.coordinates;
+  return polygons.some((rings) => inRing(x, y, rings[0]) && !rings.slice(1).some((hole) => inRing(x, y, hole)));
+}
+
+function exposureAt(p) {             // per-room exposure (from the baked floor light), outdoors fixed
+  const [x0, y0, x1, y1] = C.house, x = p.x, y = -p.z;
+  if (!(x > x0 && x < x1 && y > y0 && y < y1 && p.y < (C.floor_z || 0) + 3.2)) return EXPO_OUT;
+  const z = C.zones.find((r) => x > r[0] && x < r[2] && y > r[1] && y < r[3] &&
+    (!r[5] || inPolygon(x, y, r[5])));
+  return z ? z[4] : EXPO_IN;
+}
+
+// ------------------------------------------------------------------ UI
+function selectRoom(room) {
+  activeRoom = room;
+  document.querySelectorAll('#rooms button').forEach((b) => b.classList.toggle('on', b.dataset.room === room));
+  $('hint').textContent = matchMedia('(pointer:coarse)').matches
+    ? 'Lohista = pööra · Kaks sõrme = suumi (ka majja sisse) · vali tuba allpool'
+    : 'Lohista = pööra · Rull = suumi (ka majja sisse) · Paremklõps = nihuta · vali tuba allpool';
+}
+
+function buildRooms() {
+  const bar = $('rooms');
+  const add = (label, room, fn) => {
+    const b = document.createElement('button'); b.textContent = label; b.dataset.room = room;
+    b.onclick = fn; bar.appendChild(b);
+  };
+  add('Väljast', '', showExterior);
+  for (const r of C.rooms) add(r.name, r.id, () => enterRoom(r));
+}
+
+function resize() {
+  const w = canvas.clientWidth, h = canvas.clientHeight;
+  renderer.setSize(w, h, false);
+  camera.aspect = w / h;
+  if (!tween) camera.fov = fov();
+  camera.updateProjectionMatrix();
+}
+addEventListener('resize', resize);
+
+// ------------------------------------------------------------------ loop
+const clock = new THREE.Clock();
+function frame() {
+  const dt = Math.min(clock.getDelta(), 0.1);
+  if (tween) {
+    tween.t = Math.min(1, tween.t + dt / 0.9);
+    const s = tween.t * tween.t * (3 - 2 * tween.t);
+    camera.position.lerpVectors(tween.p0, tween.p1, s);
+    camera.quaternion.slerpQuaternions(tween.q0, tween.q1, s);
+    camera.fov = tween.f0 + (tween.f1 - tween.f0) * s; camera.updateProjectionMatrix();
+    if (tween.t >= 1) { const d = tween.done; tween = null; d && d(); }
+  } else orbit.update();
+  const target = exposureAt(camera.position);
+  renderer.toneMappingExposure += (target - renderer.toneMappingExposure) * Math.min(1, dt * 2.5);
+  renderer.render(scene, camera);
+  requestAnimationFrame(frame);
+}
+
+buildRooms();
+selectRoom('');
+resize();
+{ const [eye, target] = startEye(); camera.position.copy(eye); orbit.target.copy(target); orbit.update(); }
+loadModel().then(() => {
+  $('load').style.display = 'none';
+  const deep = C.rooms.find((r) => r.id === q.get('ruum') || r.name === q.get('ruum'));
+  if (deep) { enterRoom(deep); tween && (tween.t = 1); }
+  window.READY = true;
+  window.VIEW = { enterRoom, showExterior, camera, orbit, scene, THREE };   // for automated checks
+}).catch((err) => { $('msg').textContent = '3D mudeli laadimine ebaõnnestus: ' + err.message; console.error(err); });
+frame();
+
+</script></body></html>
