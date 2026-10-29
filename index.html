@@ -1,6 +1,8 @@
 <!doctype html><html lang="et"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Paarismaja Kose alevikus — Karjääri tn 21a</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Cpath%20fill%3D%22%238f5528%22%20d%3D%22M2%2015%2016%203l14%2012-3%203-2-2v13H7V16l-2%202z%22/%3E%3Cpath%20fill%3D%22white%22%20d%3D%22M13%2020h6v9h-6z%22/%3E%3C/svg%3E">
+<link rel="preload" as="image" href="img/05_terrass.jpg" imagesrcset="img/05_terrass-800.jpg 800w, img/05_terrass.jpg 1600w" imagesizes="(max-width: 1132px) calc(100vw - 32px), 1100px" fetchpriority="high">
 <meta name="description" content="4-toaline korter saunaga, terrass ja oma aed · 2 korterit">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="et_EE">
@@ -15,21 +17,22 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Paarismaja Kose alevikus — Karjääri tn 21a">
 <meta name="twitter:description" content="4-toaline korter saunaga, terrass ja oma aed · 2 korterit">
+<noscript><style>img[data-src],iframe[data-src]{display:none}</style></noscript>
 <style>
 :root{--ink:var(--foreground,#1d1d1b);--soft:var(--muted-foreground,#6b6a66);--card-bg:var(--card,#f4f2ee);
---line:var(--border,#e2dfd8);--acc:#b0703c;--r:var(--radius,10px)}
+--line:var(--border,#e2dfd8);--acc:#8f5528;--r:var(--radius,10px)}
 *{box-sizing:border-box}html{background:var(--background,#fbfaf7)}body{margin:0;font-family:var(--font-sans,-apple-system,Segoe UI,Roboto,sans-serif);color:var(--ink)}
 .wrap{max-width:1132px;margin:16px auto;padding:0 16px;display:flex;flex-direction:column;gap:22px;min-width:0}
 .hero{position:relative;border-radius:var(--r);overflow:hidden}
-.hero img{width:100%;display:block}
+.hero img{width:100%;height:auto;display:block}
 .hero .ov{position:absolute;left:0;right:0;bottom:0;padding:28px 24px 20px;color:#fff;
 background:linear-gradient(transparent,rgba(0,0,0,.72))}
 .hero-text .ov{position:static;background:#30372f}
 .hero h1{margin:0;font-size:clamp(22px,4vw,38px);font-weight:700;letter-spacing:-.01em}
 .hero p{margin:6px 0 0;font-size:clamp(13px,1.8vw,17px);opacity:.92}
 .button{display:inline-flex;justify-content:center;align-items:center;min-height:44px;padding:11px 18px;
-background:#724421;color:#fff;border-radius:var(--r);text-decoration:none;font-size:14px;font-weight:600;text-align:center}
-a:focus-visible{outline:3px solid var(--acc);outline-offset:4px}
+background:var(--acc);color:#fff;border-radius:var(--r);text-decoration:none;font-size:14px;font-weight:600;text-align:center}
+a:focus-visible,button:focus-visible{outline:3px solid var(--acc);outline-offset:4px}
 .explore{padding:20px;background:var(--card-bg);border:1px solid var(--line);border-radius:var(--r)}
 .explore-head{display:flex;gap:16px;justify-content:space-between;align-items:center;flex-wrap:wrap;margin-bottom:16px}
 .explore-head h2{margin:0 0 6px}.explore p{margin:0;color:var(--soft);font-size:14px;line-height:1.5}
@@ -44,7 +47,8 @@ a:focus-visible{outline:3px solid var(--acc);outline-offset:4px}
 h2{font-size:20px;margin:6px 0 10px}
 .gal{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 @media(max-width:600px){.gal{grid-template-columns:1fr}}
-figure{margin:0}figure img{width:100%;display:block;border-radius:var(--r);cursor:zoom-in}
+figure{margin:0}figure img{width:100%;height:auto;display:block;border-radius:var(--r)}
+.photo-button{display:block;width:100%;padding:0;border:0;background:none;border-radius:var(--r);cursor:zoom-in}
 figcaption{font-size:12.5px;color:var(--soft);margin-top:6px}
 .two{display:grid;grid-template-columns:1.25fr 1fr;gap:16px;align-items:start}
 @media(max-width:760px){.two{grid-template-columns:1fr}}
@@ -56,8 +60,17 @@ td:last-child{text-align:right;font-variant-numeric:tabular-nums}tr.tot td{font-
 .cta{background:var(--card-bg);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:flex;
 flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center}
 .cta .p{font-size:20px;font-weight:700}.note{font-size:11.5px;color:var(--soft)}
-.lb{position:fixed;inset:0;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center;padding:16px;z-index:9;cursor:zoom-out}
-.lb img{max-width:100%;max-height:100%;border-radius:var(--r)}.lb.on{display:flex}
+.contact-title{font-size:18px;margin:10px 0 4px}.contact-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.lb{position:fixed;inset:0;width:100%;height:100%;max-width:none;max-height:none;margin:0;border:0;
+background:rgba(0,0,0,.94);color:#fff;display:none;flex-direction:column;gap:16px;padding:16px}
+.lb[open]{display:flex}.lb::backdrop{background:rgba(0,0,0,.9)}
+.lb-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%}
+.lb-toolbar p{margin:0;font-weight:600}.lb-controls{display:flex;gap:8px}
+.lb button{min-height:44px;min-width:44px;border:1px solid #ffffff66;border-radius:var(--r);padding:8px 12px;
+font:inherit;color:#fff;background:var(--acc);cursor:pointer}.lb button:focus-visible{outline-color:#fff}
+.lb-content{flex:1;min-height:0;width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px}
+.lb img{max-width:100%;max-height:calc(100dvh - 180px);width:auto;height:auto;object-fit:contain;border-radius:var(--r)}
+.lb-caption{margin:0;text-align:center;font-size:14px;line-height:1.4}
 @media(max-width:600px){
  .wrap{gap:20px}.hero .ov{position:static;background:#30372f;padding:20px}
  .hero img{aspect-ratio:16/10;object-fit:cover}.hero h1{font-size:26px}.hero p{font-size:14px;line-height:1.5}
@@ -80,14 +93,15 @@ flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center}
  a{color:#000;text-decoration:none}
 }
 </style></head><body><div class="wrap">
-<div class="hero"><img src="img/05_terrass.jpg" alt="Aiapoolne vaade — terrassid ja suured klaasuksed aeda"><div class="ov">
+<div class="hero"><img src="img/05_terrass.jpg" srcset="img/05_terrass-800.jpg 800w, img/05_terrass.jpg 1600w" sizes="(max-width: 1132px) calc(100vw - 32px), 1100px" width="1600" height="1000" alt="Aiapoolne vaade — terrassid ja suured klaasuksed aeda" loading="eager" fetchpriority="high"><div class="ov">
 <h1>Paarismaja Kose alevikus</h1><p>4-toaline korter saunaga, terrass ja oma aed · 2 korterit<br>Karjääri tn 21a, Kose alevik, Võru vald, Võru maakond</p>
 <span class="badge">Hind: küsi pakkumist</span>
 </div></div>
 <section class="explore" aria-labelledby="tour-title">
 <div class="explore-head"><div><h2 id="tour-title">Vaata maja 360°</h2>
 <p>Liigu ruumides ja vaata oma tulevast kodu igast küljest.</p></div><a class="button" href="3d/index.html">Vaata 3D-mudelit ↗</a></div>
-<iframe class="tour-frame" src="tuur/index.html" title="Maja 360° virtuaaltuur" loading="lazy" allow="fullscreen" allowfullscreen></iframe>
+<iframe class="tour-frame" src="about:blank" data-src="tuur/index.html" title="Maja 360° virtuaaltuur" loading="lazy" allow="fullscreen" allowfullscreen></iframe>
+<noscript><iframe class="tour-frame" src="tuur/index.html" title="Maja 360° virtuaaltuur" loading="lazy" allow="fullscreen" allowfullscreen></iframe></noscript>
 <div class="explore-links"><a href="tuur/index.html">Ava 360° tuur eraldi lehel ↗</a></div>
 </section>
 <div class="facts">
@@ -98,18 +112,97 @@ flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center}
 <div class="fact"><b>2</b><span>parkimiskohta korteri kohta</span></div>
 <div class="fact"><b>1195 m²</b><span>krunt (2 korterit)</span></div>
 </div>
-<div><h2>Pildid</h2><div class="gal"><figure><img src="img/01_tanav.jpg" alt="Tänavapoolne vaade — sissepääsud ja parkimine (2 kohta korteri kohta)"><figcaption>Tänavapoolne vaade — sissepääsud ja parkimine (2 kohta korteri kohta)</figcaption></figure><figure><img src="img/07_elutuba.jpg" alt="Avatud elutuba-köök, 31 m² — valmis köök, päevavalgus"><figcaption>Avatud elutuba-köök, 31 m² — valmis köök, päevavalgus</figcaption></figure><figure><img src="img/13_magamistuba.jpg" alt="Magamistuba 13,6 m², terrassiuks aeda"><figcaption>Magamistuba 13,6 m², terrassiuks aeda</figcaption></figure><figure><img src="img/02_aeroo.jpg" alt="Linnulennuvaade"><figcaption>Linnulennuvaade</figcaption></figure></div></div>
-<div class="two"><div><h2>Korruse plaan</h2><figure><img src="img/11_plaan.jpg" alt="Mõlemad korterid (KRT 1 vasakul, KRT 2 paremal)"><figcaption>Mõlemad korterid (KRT 1 vasakul, KRT 2 paremal)</figcaption></figure><a class="plan-download" href="img/11_plaan.jpg" download="korruse-plaan.jpg">Lae alla korruse plaan</a></div>
+<div><h2>Pildid</h2><div class="gal"><figure><button type="button" class="photo-button" aria-label="Ava pilt: Tänavapoolne vaade — sissepääsud ja parkimine (2 kohta korteri kohta)" aria-haspopup="dialog" aria-controls="lb" data-full-src="img/01_tanav.jpg"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%221600%22%20height%3D%221000%22/%3E" data-src="img/01_tanav.jpg" data-srcset="img/01_tanav-800.jpg 800w, img/01_tanav.jpg 1600w" sizes="(max-width: 600px) calc(100vw - 32px), (max-width: 1132px) calc((100vw - 44px) / 2), 544px" width="1600" height="1000" alt="Tänavapoolne vaade — sissepääsud ja parkimine (2 kohta korteri kohta)" loading="lazy" decoding="async"><noscript><img src="img/01_tanav.jpg" srcset="img/01_tanav-800.jpg 800w, img/01_tanav.jpg 1600w" sizes="(max-width: 600px) calc(100vw - 32px), (max-width: 1132px) calc((100vw - 44px) / 2), 544px" width="1600" height="1000" alt="Tänavapoolne vaade — sissepääsud ja parkimine (2 kohta korteri kohta)" loading="lazy"></noscript></button><figcaption>Tänavapoolne vaade — sissepääsud ja parkimine (2 kohta korteri kohta)</figcaption></figure><figure><button type="button" class="photo-button" aria-label="Ava pilt: Avatud elutuba-köök, 31 m² — valmis köök, päevavalgus" aria-haspopup="dialog" aria-controls="lb" data-full-src="img/07_elutuba.jpg"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%221600%22%20height%3D%221000%22/%3E" data-src="img/07_elutuba.jpg" data-srcset="img/07_elutuba-800.jpg 800w, img/07_elutuba.jpg 1600w" sizes="(max-width: 600px) calc(100vw - 32px), (max-width: 1132px) calc((100vw - 44px) / 2), 544px" width="1600" height="1000" alt="Avatud elutuba-köök, 31 m² — valmis köök, päevavalgus" loading="lazy" decoding="async"><noscript><img src="img/07_elutuba.jpg" srcset="img/07_elutuba-800.jpg 800w, img/07_elutuba.jpg 1600w" sizes="(max-width: 600px) calc(100vw - 32px), (max-width: 1132px) calc((100vw - 44px) / 2), 544px" width="1600" height="1000" alt="Avatud elutuba-köök, 31 m² — valmis köök, päevavalgus" loading="lazy"></noscript></button><figcaption>Avatud elutuba-köök, 31 m² — valmis köök, päevavalgus</figcaption></figure><figure><button type="button" class="photo-button" aria-label="Ava pilt: Magamistuba 13,6 m², terrassiuks aeda" aria-haspopup="dialog" aria-controls="lb" data-full-src="img/13_magamistuba.jpg"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%221600%22%20height%3D%221000%22/%3E" data-src="img/13_magamistuba.jpg" data-srcset="img/13_magamistuba-800.jpg 800w, img/13_magamistuba.jpg 1600w" sizes="(max-width: 600px) calc(100vw - 32px), (max-width: 1132px) calc((100vw - 44px) / 2), 544px" width="1600" height="1000" alt="Magamistuba 13,6 m², terrassiuks aeda" loading="lazy" decoding="async"><noscript><img src="img/13_magamistuba.jpg" srcset="img/13_magamistuba-800.jpg 800w, img/13_magamistuba.jpg 1600w" sizes="(max-width: 600px) calc(100vw - 32px), (max-width: 1132px) calc((100vw - 44px) / 2), 544px" width="1600" height="1000" alt="Magamistuba 13,6 m², terrassiuks aeda" loading="lazy"></noscript></button><figcaption>Magamistuba 13,6 m², terrassiuks aeda</figcaption></figure><figure><button type="button" class="photo-button" aria-label="Ava pilt: Linnulennuvaade" aria-haspopup="dialog" aria-controls="lb" data-full-src="img/02_aeroo.jpg"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%221600%22%20height%3D%221000%22/%3E" data-src="img/02_aeroo.jpg" data-srcset="img/02_aeroo-800.jpg 800w, img/02_aeroo.jpg 1600w" sizes="(max-width: 600px) calc(100vw - 32px), (max-width: 1132px) calc((100vw - 44px) / 2), 544px" width="1600" height="1000" alt="Linnulennuvaade" loading="lazy" decoding="async"><noscript><img src="img/02_aeroo.jpg" srcset="img/02_aeroo-800.jpg 800w, img/02_aeroo.jpg 1600w" sizes="(max-width: 600px) calc(100vw - 32px), (max-width: 1132px) calc((100vw - 44px) / 2), 544px" width="1600" height="1000" alt="Linnulennuvaade" loading="lazy"></noscript></button><figcaption>Linnulennuvaade</figcaption></figure></div></div>
+<div class="two"><div><h2>Korruse plaan</h2><figure><button type="button" class="photo-button" aria-label="Ava pilt: Mõlemad korterid (KRT 1 vasakul, KRT 2 paremal)" aria-haspopup="dialog" aria-controls="lb" data-full-src="img/11_plaan.jpg"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%221600%22%20height%3D%221420%22/%3E" data-src="img/11_plaan.jpg" data-srcset="img/11_plaan-800.jpg 800w, img/11_plaan.jpg 1600w" sizes="(max-width: 760px) calc(100vw - 32px), (max-width: 1132px) calc((100vw - 48px) * 5 / 9), 602px" width="1600" height="1420" alt="Mõlemad korterid (KRT 1 vasakul, KRT 2 paremal)" loading="lazy" decoding="async"><noscript><img src="img/11_plaan.jpg" srcset="img/11_plaan-800.jpg 800w, img/11_plaan.jpg 1600w" sizes="(max-width: 760px) calc(100vw - 32px), (max-width: 1132px) calc((100vw - 48px) * 5 / 9), 602px" width="1600" height="1420" alt="Mõlemad korterid (KRT 1 vasakul, KRT 2 paremal)" loading="lazy"></noscript></button><figcaption>Mõlemad korterid (KRT 1 vasakul, KRT 2 paremal)</figcaption></figure><a class="plan-download" href="img/11_plaan.jpg" download="korruse-plaan.jpg">Lae alla korruse plaan</a></div>
 <div><h2>Ruumid (üks korter)</h2><table><tr><td>Esik</td><td>8,9 m²</td></tr><tr><td>WC</td><td>2,3 m²</td></tr><tr><td>Pesuruum</td><td>7,4 m²</td></tr><tr><td>Saun</td><td>3,1 m²</td></tr><tr><td>Tehnoruum</td><td>5,0 m²</td></tr><tr><td>Elutuba/köök</td><td>31,0 m²</td></tr><tr><td>Tuba I</td><td>13,6 m²</td></tr><tr><td>Tuba II</td><td>10,0 m²</td></tr><tr><td>Tuba III</td><td>10,2 m²</td></tr><tr class="tot"><td>Kokku</td><td>91,4 m²</td></tr></table>
 <p class="note">Pinnad BIM-mudelist (eelprojekt EP080926). Köetav pind kokku 183 m² (2 korterit).</p>
-<figure><img src="img/12_3dplaan.jpg" alt="Korteri 3D-plaan"><figcaption>Korteri 3D-plaan</figcaption></figure></div></div>
+<figure><button type="button" class="photo-button" aria-label="Ava pilt: Korteri 3D-plaan" aria-haspopup="dialog" aria-controls="lb" data-full-src="img/12_3dplaan.jpg"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%221600%22%20height%3D%221000%22/%3E" data-src="img/12_3dplaan.jpg" data-srcset="img/12_3dplaan-800.jpg 800w, img/12_3dplaan.jpg 1600w" sizes="(max-width: 760px) calc(100vw - 32px), (max-width: 1132px) calc((100vw - 48px) * 4 / 9), 482px" width="1600" height="1000" alt="Korteri 3D-plaan" loading="lazy" decoding="async"><noscript><img src="img/12_3dplaan.jpg" srcset="img/12_3dplaan-800.jpg 800w, img/12_3dplaan.jpg 1600w" sizes="(max-width: 760px) calc(100vw - 32px), (max-width: 1132px) calc((100vw - 48px) * 4 / 9), 482px" width="1600" height="1000" alt="Korteri 3D-plaan" loading="lazy"></noscript></button><figcaption>Korteri 3D-plaan</figcaption></figure></div></div>
 <div><h2>Ehitus ja tehnika</h2><div class="feat"><div><b>Küte</b>Maasoojuspump ~8 kW, põrandaküte kõikides ruumides, iga ruum oma termostaadiga</div><div><b>Ventilatsioon</b>Soojustagastusega agregaat Systemair SAVE (kuni 85%), jahutus laekassetiga</div><div><b>Seinad</b>Puitkarkass 45×195 + 200 mm vill + 50 mm lisavill, U = 0,16 W/m²K</div><div><b>Aknad</b>PVC raamid antratsiit, 3-kordne klaaspakett U = 0,8 W/m²K</div><div><b>Põrand</b>Plaatvundament, 300 mm EPS, tammeparkett, märgades ruumides plaat</div><div><b>Saun</b>Leiliruum haavapuidust lavadega, 8 kW elektrikeris, dušš ja pesuruum</div><div><b>Välisviimistlus</b>Vertikaalne puitlaudis: naturaalne puit, tumepruun ja tumehall</div><div><b>Õueala</b>Puitterrass aiapoolsel küljel, varikatusega sissepääs, betoonkivisillutis</div></div></div>
-<div><h2>Vaata seina sisse</h2><div class="gal"><figure><img src="img/09_seinadetail.jpg" alt="Välisseina ehitus — 356 mm, U = 0,16 W/m²K"><figcaption>Välisseina ehitus — 356 mm, U = 0,16 W/m²K</figcaption></figure><figure><img src="img/06_tehnosysteemid.jpg" alt="Tehnosüsteemid: ventilatsioon, küte, vesi, kanalisatsioon"><figcaption>Tehnosüsteemid: ventilatsioon, küte, vesi, kanalisatsioon</figcaption></figure></div></div>
-<div class="cta"><div><div class="p">Hind: küsi pakkumist</div><div>Kontakt: [maakleri nimi, telefon, e-post]</div></div>
-<div class="note"><a href="ulevaade.html">Hoone ülevaade</a> · <a href="info/">Tehnilised andmed</a> · <a href="infopakett.pdf">Infopakett (PDF)</a><br>Visualiseeringud on illustratiivsed ja põhinevad eelprojektil.<br>
+<div><h2>Vaata seina sisse</h2><div class="gal"><figure><button type="button" class="photo-button" aria-label="Ava pilt: Välisseina ehitus — 356 mm, U = 0,16 W/m²K" aria-haspopup="dialog" aria-controls="lb" data-full-src="img/09_seinadetail.jpg"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%221600%22%20height%3D%221000%22/%3E" data-src="img/09_seinadetail.jpg" data-srcset="img/09_seinadetail-800.jpg 800w, img/09_seinadetail.jpg 1600w" sizes="(max-width: 600px) calc(100vw - 32px), (max-width: 1132px) calc((100vw - 44px) / 2), 544px" width="1600" height="1000" alt="Välisseina ehitus — 356 mm, U = 0,16 W/m²K" loading="lazy" decoding="async"><noscript><img src="img/09_seinadetail.jpg" srcset="img/09_seinadetail-800.jpg 800w, img/09_seinadetail.jpg 1600w" sizes="(max-width: 600px) calc(100vw - 32px), (max-width: 1132px) calc((100vw - 44px) / 2), 544px" width="1600" height="1000" alt="Välisseina ehitus — 356 mm, U = 0,16 W/m²K" loading="lazy"></noscript></button><figcaption>Välisseina ehitus — 356 mm, U = 0,16 W/m²K</figcaption></figure><figure><button type="button" class="photo-button" aria-label="Ava pilt: Tehnosüsteemid: ventilatsioon, küte, vesi, kanalisatsioon" aria-haspopup="dialog" aria-controls="lb" data-full-src="img/06_tehnosysteemid.jpg"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%221600%22%20height%3D%221000%22/%3E" data-src="img/06_tehnosysteemid.jpg" data-srcset="img/06_tehnosysteemid-800.jpg 800w, img/06_tehnosysteemid.jpg 1600w" sizes="(max-width: 600px) calc(100vw - 32px), (max-width: 1132px) calc((100vw - 44px) / 2), 544px" width="1600" height="1000" alt="Tehnosüsteemid: ventilatsioon, küte, vesi, kanalisatsioon" loading="lazy" decoding="async"><noscript><img src="img/06_tehnosysteemid.jpg" srcset="img/06_tehnosysteemid-800.jpg 800w, img/06_tehnosysteemid.jpg 1600w" sizes="(max-width: 600px) calc(100vw - 32px), (max-width: 1132px) calc((100vw - 44px) / 2), 544px" width="1600" height="1000" alt="Tehnosüsteemid: ventilatsioon, küte, vesi, kanalisatsioon" loading="lazy"></noscript></button><figcaption>Tehnosüsteemid: ventilatsioon, küte, vesi, kanalisatsioon</figcaption></figure></div></div>
+<div class="cta"><div><div class="p">Hind: küsi pakkumist</div><div class="contact-title">Küsi pakkumist</div></div>
+<div class="note"><a href="ulevaade.html">Hoone ülevaade</a> · <a href="info/">Tehnilised andmed</a> · <a href="infopakett.pdf">Infopakett (PDF)</a><br>
+Visualiseeringud on illustratiivsed ja põhinevad eelprojektil.<br>
 Asukoht: <a href="https://www.openstreetmap.org/?mlat=57.816693&mlon=27.041884#map=17/57.816693/27.041884">vaata kaardil</a></div></div>
-</div><div class="lb" id="lb"><img id="lbi" alt=""></div>
-<script>const lb=document.getElementById('lb'),li=document.getElementById('lbi');
-document.querySelectorAll('figure img').forEach(i=>i.onclick=()=>{li.src=i.src;lb.classList.add('on')});lb.onclick=()=>lb.classList.remove('on');
-window.READY = true;</script>
+</div><dialog class="lb" id="lb" aria-modal="true" aria-labelledby="lb-title" aria-describedby="lb-caption">
+<div class="lb-toolbar"><p id="lb-title">Fotogalerii</p><div class="lb-controls">
+<button type="button" id="lb-prev" aria-label="Eelmine pilt">←</button>
+<button type="button" id="lb-next" aria-label="Järgmine pilt">→</button>
+<button type="button" id="lb-close" aria-label="Sulge galerii" autofocus>Sulge ×</button>
+</div></div><div class="lb-content"><img id="lbi" alt=""><p class="lb-caption" id="lb-caption" aria-live="polite"></p></div>
+</dialog><script>
+function loadMedia(element) {
+  if (!element.dataset.src) return;
+  if (element.dataset.srcset) element.srcset = element.dataset.srcset;
+  element.src = element.dataset.src;
+  delete element.dataset.src;
+  delete element.dataset.srcset;
+}
+function startDeferredMedia() {
+  const media = document.querySelectorAll('[data-src]');
+  if (!('IntersectionObserver' in window)) { media.forEach(loadMedia); return; }
+  const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+    if (entry.isIntersecting) { loadMedia(entry.target); observer.unobserve(entry.target); }
+  }), {rootMargin: '240px 0px'});
+  media.forEach(element => observer.observe(element));
+}
+// Native lazy loading can fetch several screens ahead. Keep the first connection for the hero.
+const hero = document.querySelector('.hero img');
+if (!hero || hero.complete) startDeferredMedia();
+else {
+  hero.addEventListener('load', startDeferredMedia, {once: true});
+  hero.addEventListener('error', startDeferredMedia, {once: true});
+}
+const lb = document.getElementById('lb'), li = document.getElementById('lbi');
+const photos = [...document.querySelectorAll('.photo-button')];
+const closeButton = document.getElementById('lb-close');
+let current = 0, opener = null, previousOverflow = '';
+function showPhoto(index) {
+  current = (index + photos.length) % photos.length;
+  const button = photos[current], image = button.querySelector('img');
+  li.alt = image.alt;
+  li.width = image.getAttribute('width');
+  li.height = image.getAttribute('height');
+  li.src = button.dataset.fullSrc;
+  document.getElementById('lb-caption').textContent = `${current + 1} / ${photos.length} · ${image.alt}`;
+}
+photos.forEach((button, index) => button.addEventListener('click', () => {
+  opener = button;
+  showPhoto(index);
+  previousOverflow = document.body.style.overflow;
+  document.body.style.overflow = 'hidden';
+  lb.showModal();
+  closeButton.focus();
+}));
+closeButton.addEventListener('click', () => lb.close());
+document.getElementById('lb-prev').addEventListener('click', () => showPhoto(current - 1));
+document.getElementById('lb-next').addEventListener('click', () => showPhoto(current + 1));
+lb.addEventListener('click', event => { if (event.target === lb) lb.close(); });
+lb.addEventListener('cancel', event => { event.preventDefault(); lb.close(); });
+lb.addEventListener('close', () => {
+  document.body.style.overflow = previousOverflow;
+  if (opener?.isConnected) opener.focus({preventScroll: true});
+});
+lb.addEventListener('keydown', event => {
+  if (event.key === 'Escape') { event.preventDefault(); lb.close(); }
+  if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+    event.preventDefault();
+    showPhoto(current + (event.key === 'ArrowRight' ? 1 : -1));
+  }
+  if (event.key === 'Tab') {
+    const controls = [...lb.querySelectorAll('button:not(:disabled)')];
+    const first = controls[0], last = controls[controls.length - 1];
+    if (event.shiftKey && (document.activeElement === first || document.activeElement === lb)) {
+      event.preventDefault(); last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault(); first.focus();
+    }
+  }
+});
+// Printing includes photos even when the visitor has not scrolled to them yet.
+window.addEventListener('beforeprint', () => document.querySelectorAll('img[loading="lazy"]').forEach(image => {
+  image.loading = 'eager';
+  loadMedia(image);
+}));
+window.READY = true;
+</script>
 </body></html>

@@ -53,3 +53,9 @@
 
 /tuur/index.html
   Cache-Control: public, max-age=0, must-revalidate
+
+/ulevaade
+  Cache-Control: public, max-age=0, must-revalidate
+
+/ulevaade.html
+  Cache-Control: public, max-age=0, must-revalidate
